@@ -37,7 +37,7 @@
 
 # Lets first find which drives are mounted
 
-# In[52]:
+# In[1]:
 
 
 ls /media/andre
@@ -45,7 +45,7 @@ ls /media/andre
 
 # I know that the first 3 drives contain experimental data, the last `maternal` drive is where I plan to store the transcoded videos
 
-# In[53]:
+# In[2]:
 
 
 from pathlib import Path 
@@ -68,7 +68,7 @@ OUTPUT_DRIVE = MOUNT_POINT / 'maternal'
 
 # Lets see how big our original dataset is
 
-# In[54]:
+# In[3]:
 
 
 get_ipython().run_cell_magic('time', '', '\ntotal_size = 0\nfor drive in DRIVES:\n    # glob is a useful tool for searching folders, here we tell it to find every file\n    files = (MOUNT_POINT / drive).glob(\'**/*\')\n    \n    # Only keep the files (discard directories)\n    files = list(filter(lambda x: x.is_file(), files)) \n    \n    # Get the size of each file\n    sizes = list(map(lambda x: x.stat().st_size, files)) \n    size = sum(sizes)\n    total_size += size\n    \n    # print the size in gigabytes\n    print(f"Drive {drive} is {size / 1e9:.2f}GB")\n    \n# print the total size\nprint(f"Total: {total_size / 1e9:.2f}GB")')
@@ -80,7 +80,7 @@ get_ipython().run_cell_magic('time', '', '\ntotal_size = 0\nfor drive in DRIVES:
 # 
 # Since videos can have many file extensions, lets print out all of the file extensions so we can identify the video ones.
 
-# In[55]:
+# In[4]:
 
 
 total_size = 0
@@ -110,7 +110,7 @@ print("Extensions: ", list(extensions))
 # 
 # ... but first lets check how many videos
 
-# In[56]:
+# In[5]:
 
 
 for drive in DRIVES:
@@ -124,7 +124,7 @@ for drive in DRIVES:
 
 # Again, eek. But I can't think of a way around seeing them all so lets print them out anyways.
 
-# In[57]:
+# In[6]:
 
 
 for drive in DRIVES:
@@ -142,7 +142,7 @@ for drive in DRIVES:
 # 
 # For now let's say the rest of the videos are useful, we can sort them out later by viewing them. There are too many to look through each one right now.
 
-# In[58]:
+# In[7]:
 
 
 def is_visible(filepath):
@@ -159,6 +159,7 @@ def is_not_recycled(filepath):
         
     return True
     
+all_videos = []
 for drive in DRIVES:
     videos = (
         list((MOUNT_POINT / drive).glob('**/*.mp4')) + 
@@ -169,6 +170,7 @@ for drive in DRIVES:
     videos = list(filter(is_visible, videos))
     videos = list(filter(is_not_recycled, videos))
     after_filtering_len = len(videos)
+    all_videos += videos
     
     print(f"Length of videos before filtering: {all_videos_len:4}, after: {after_filtering_len}")
 
@@ -176,16 +178,17 @@ for drive in DRIVES:
 # ### Visualizing structure of folders
 # Sometimes the folders are very disorganized and its hard to get a big picture of what data we have by looking into each folder one at a time
 
-# In[92]:
+# In[8]:
 
 
 pip install -q treelib
 
 
-# In[91]:
+# In[9]:
 
 
 import treelib
+from tqdm import tqdm
 
 tree = treelib.Tree()
 tree.create_node('/', '/')
@@ -219,24 +222,7 @@ tree.show()
 # 
 # Knowing this metadata is also important because it can help us validate the transcoded videos later.
 
-# In[59]:
-
-
-all_videos = []
-for drive in DRIVES:
-    # Get all mp4/MPG video files
-    videos = (
-        list((MOUNT_POINT / drive).glob('**/*.mp4')) + 
-        list((MOUNT_POINT / drive).glob('**/*.MPG'))
-    )
-    
-    # Filter out the hidden and recycled videos
-    videos = list(filter(is_visible, videos))
-    videos = list(filter(is_not_recycled, videos))
-    all_videos += videos
-
-
-# In[60]:
+# In[10]:
 
 
 import pandas as pd
@@ -262,7 +248,7 @@ metadata_df
 
 # ### Total duration
 
-# In[61]:
+# In[11]:
 
 
 (metadata_df.frames / metadata_df.fps).sum()
@@ -270,7 +256,7 @@ metadata_df
 
 # ... That doesn't look right. What's going on?
 
-# In[62]:
+# In[12]:
 
 
 metadata_df.describe()
@@ -280,7 +266,7 @@ metadata_df.describe()
 # 
 # Let's see what videos are causing the problem
 
-# In[63]:
+# In[13]:
 
 
 metadata_df.loc[metadata_df.frames < 0]
@@ -288,7 +274,7 @@ metadata_df.loc[metadata_df.frames < 0]
 
 # Bad videos. Fortunately there's only a few so we can ignore them and deal with them manually later. Hopefully transcoding them will correct it.
 
-# In[64]:
+# In[14]:
 
 
 outlier_rows = metadata_df.frames < 0
@@ -298,7 +284,7 @@ metadata_df.loc[outlier_rows]
 
 # Great! we can get the total duration
 
-# In[65]:
+# In[15]:
 
 
 (metadata_df.frames / metadata_df.fps).sum()
@@ -306,7 +292,7 @@ metadata_df.loc[outlier_rows]
 
 # In human language...
 
-# In[66]:
+# In[16]:
 
 
 total_seconds = (metadata_df.frames / metadata_df.fps).sum()
@@ -318,7 +304,7 @@ print(f"Total days of videos: {total_days:.1f}")
 
 # ### Any other differences in size, etc?
 
-# In[67]:
+# In[17]:
 
 
 metadata_df.describe()
@@ -326,7 +312,7 @@ metadata_df.describe()
 
 # All of the videos have exactly the same height, and pretty much the same fps. There are videos with different widths however. Lets see all of the widths.
 
-# In[68]:
+# In[18]:
 
 
 metadata_df.width.unique()
@@ -334,25 +320,25 @@ metadata_df.width.unique()
 
 # Only two video widths, 704px and 720px. Lets see if these are from the two different filetypes `mp4` and `MPG`
 
-# In[69]:
+# In[19]:
 
 
 metadata_df.loc[metadata_df.width==704].describe()
 
 
-# In[70]:
+# In[20]:
 
 
 metadata_df.loc[metadata_df.width==704].sample(3)
 
 
-# In[71]:
+# In[21]:
 
 
 metadata_df.loc[metadata_df.width==720].describe()
 
 
-# In[72]:
+# In[22]:
 
 
 metadata_df.loc[metadata_df.width==720].sample(3)
@@ -366,7 +352,7 @@ metadata_df.loc[metadata_df.width==720].sample(3)
 
 # ## 3. Transcoding the videos
 
-# In[73]:
+# In[23]:
 
 
 print(f"We're not going to reorganize our {len(all_videos)} videos here.")
@@ -387,20 +373,30 @@ print(f"We're not going to reorganize our {len(all_videos)} videos here.")
 # 
 # We can do things like resizing the video or changing quality, in the below command I decrease the video quality slightly using `-crf 24`. This should shrinkg their size a lot.
 
-# In[74]:
+# In[24]:
 
+
+import re
 
 with open('transcode.sh', 'w') as fp:
     lines = []
     for video in all_videos:
         relative_path = video.relative_to(MOUNT_POINT)
         output_filepath = OUTPUT_DRIVE / relative_path
-    
+        
+        # For now lets skip existing filepaths
+        if output_filepath.exists():
+            continue
+        
         cmd = (
-            "mkdir -p {} &&" # make a new directory if necessary
-            "ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i '{}' " # the input file and flags
-            "-c:v h264_nvenc -crf 24 '{}'\n" # the output file and flags
-        ).format(output_filepath.parent, video, output_filepath)
+            "mkdir -p {output_dir} && " # make a new directory if necessary
+            "ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i {input_file} " # the input file and flags
+            "-c:v h264_nvenc -crf 24 -an {output_file}\n" # the output file and flags
+        ).format(
+            output_dir=re.escape(str(output_filepath.parent)), 
+            input_file=re.escape(str(video)), 
+            output_file=re.escape(str(output_filepath))
+        ) 
         
         lines.append(cmd)
         
@@ -409,7 +405,7 @@ with open('transcode.sh', 'w') as fp:
 
 # This is what the bash file looks like (but a lot more lines)
 
-# In[75]:
+# In[25]:
 
 
 get_ipython().system(' head -n 3 transcode.sh')
@@ -417,12 +413,14 @@ get_ipython().system(' head -n 3 transcode.sh')
 
 # I've now started running this bash script. I'll see you in a few days!
 
-# ### Veriftying videos
-# ... Well, I'm a bit impatient, so I'm not going to wait a few days. Let's check to see how things are going after an hour.
+# ### Verifying videos
+# ... Well, I'm a bit impatient, so I'm not going to wait a few days. Let's check to see how things are going after a few hours.
 # 
-# Note we expect one video to not match/be readable as the bash script is still running and transcoding away as I write this.
+# We expect some differences
+# - One video to not match/be readable as the bash script is still running and transcoding away as I write this.
+# - Other videos will be a few frames off, often some frames are dropped during transcoding
 
-# In[76]:
+# In[26]:
 
 
 transcoded_videos = (
@@ -454,12 +452,40 @@ transcoded_metadata_df
 
 # #### Quality checks
 
-# ##### Extracting individual frames
+# ##### Comparing individual frames
+# Unfortunately these don't match up exactly because a number of frames are dropped during transcoding
+# 
+# There are ways around this, but the underlying problem was with the original videos in this case so I just let ffmpeg correct them as it saw necessary. In total only a few seconds are lost from around 2h of video.
 
-# In[ ]:
+# In[28]:
 
 
+import numpy as np
+import matplotlib.pyplot as plt
 
+for idx, row in transcoded_metadata_df.sample(3).iterrows():
+    frames = min(row.transcoded_frames, row.frames)
+    frame_idx = np.random.randint(frames)
+    
+    original_cap = cv2.VideoCapture(str(row.file))
+    original_cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
+    
+    transcoded_cap = cv2.VideoCapture(str(row.transcoded_file))
+    transcoded_cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
+    
+    plt.figure(figsize=(16, 8))
+    gs = plt.GridSpec(1, 2)
+    plt.subplot(gs[0])
+    ret, frame = original_cap.read()
+    frame = np.flip(frame, axis=2)
+    plt.imshow(frame)
+    
+    plt.subplot(gs[1])
+    ret, frame = transcoded_cap.read()
+    frame = np.flip(frame, axis=2)
+    plt.imshow(frame)
+    
+    plt.show()
 
 
 # #### Stacking videos
