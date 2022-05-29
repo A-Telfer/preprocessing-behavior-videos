@@ -458,8 +458,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="what-is-transcoding-and-why-do-we-do-it">
 <h3>What is transcoding and why do we do it?<a class="headerlink" href="#what-is-transcoding-and-why-do-we-do-it" title="Permalink to this headline">¶</a></h3>
 <p>Transcoding is the process of converting video from one format to another.</p>
-<p>In behavior, this is useful because videos directly from cameras are often overly large. By transcoding we can reduce the size of videos by half or more. Additionally, we can also resize videos (e.g. from 4K resolution to 720p), remove sound, and perform other useful functions.</p>
-<p>In some cases, I have shrunk experiments of over 100GB to &lt;2GB with no difference to scoring. This makes using automated tools, such as deeplabcut, a lot faster. Furthermore it’s a lot easier to transfer the files around to students or publish them online.</p>
+<p>In behavior, this is useful because we may want to compress videos to use as little disk space as possible or to lower their resolution to speed up later deep learning models.</p>
 </div>
 <div class="section" id="what-s-covered-here">
 <h3>What’s covered here<a class="headerlink" href="#what-s-covered-here" title="Permalink to this headline">¶</a></h3>
@@ -555,8 +554,8 @@ const thebe_selector_output = ".output, .cell_output"
 Drive 5161-4A93 is 491.29GB
 Drive 9B57-8640 is 705.03GB
 Total: 2193.44GB
-CPU times: user 66.3 ms, sys: 28.1 ms, total: 94.4 ms
-Wall time: 93.8 ms
+CPU times: user 60.7 ms, sys: 23.9 ms, total: 84.6 ms
+Wall time: 84.5 ms
 </pre></div>
 </div>
 </div>
@@ -589,7 +588,7 @@ Wall time: 93.8 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extensions:  [&#39;shadowIndexHead&#39;, &#39;loc&#39;, &#39;indexDirectory&#39;, &#39;dat&#39;, &#39;indexHead&#39;, &#39;updates&#39;, &#39;shadow&#39;, &#39;indexBigDates&#39;, &#39;mp4&#39;, &#39;_ko9 day 20&#39;, &#39;txt&#39;, &#39;indexTermIds&#39;, &#39;MPG&#39;, &#39;shadowIndexPositionTable&#39;, &#39;1&#39;, &#39;_KO15 Day 20&#39;, &#39;shadowIndexTermIds&#39;, &#39;modified&#39;, &#39;2&#39;, &#39;indexUpdates&#39;, &#39;shadowIndexDirectory&#39;, &#39;indexPositions&#39;, &#39;indexCompactDirectory&#39;, &#39;_KO16 day 20&#39;, &#39;_KO14 day 20&#39;, &#39;db&#39;, &#39;indexPostings&#39;, &#39;directoryStoreFile&#39;, &#39;_WT3 day 15&#39;, &#39;_KO10 DAY 15&#39;, &#39;SnowLeopard&#39;, &#39;indexGroups&#39;, &#39;wbcat&#39;, &#39;_KO152 Day20&#39;, &#39;indexArrays&#39;, &#39;indexPositionTable&#39;, &#39;Cab&#39;, &#39;donotpresent&#39;, &#39;_KO112 D15&#39;, &#39;_KO12 day 15&#39;, &#39;_KO152 DAY 15&#39;, &#39;9&#39;, &#39;plist&#39;, &#39;shadowIndexGroups&#39;, &#39;Trashes&#39;, &#39;bin&#39;, &#39;159&#39;, &#39;indexIds&#39;, &#39;10&#39;, &#39;shadowIndexCompactDirectory&#39;, &#39;wbverify&#39;, &#39;_KO15 day 15&#39;, &#39;_KO16 day 15&#39;, &#39;ini&#39;, &#39;_KO10 DAY 20&#39;, &#39;created&#39;, &#39;zip&#39;, &#39;state&#39;, &#39;shadowIndexArrays&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extensions:  [&#39;MPG&#39;, &#39;indexPositions&#39;, &#39;indexDirectory&#39;, &#39;indexGroups&#39;, &#39;_KO15 Day 20&#39;, &#39;zip&#39;, &#39;updates&#39;, &#39;_KO16 day 15&#39;, &#39;shadowIndexGroups&#39;, &#39;shadowIndexTermIds&#39;, &#39;wbverify&#39;, &#39;indexPostings&#39;, &#39;directoryStoreFile&#39;, &#39;Cab&#39;, &#39;state&#39;, &#39;indexHead&#39;, &#39;indexIds&#39;, &#39;_WT3 day 15&#39;, &#39;shadowIndexDirectory&#39;, &#39;10&#39;, &#39;wbcat&#39;, &#39;9&#39;, &#39;_KO112 D15&#39;, &#39;shadowIndexCompactDirectory&#39;, &#39;indexTermIds&#39;, &#39;_KO15 day 15&#39;, &#39;_KO16 day 20&#39;, &#39;indexUpdates&#39;, &#39;shadowIndexPositionTable&#39;, &#39;indexCompactDirectory&#39;, &#39;txt&#39;, &#39;db&#39;, &#39;shadowIndexArrays&#39;, &#39;plist&#39;, &#39;_ko9 day 20&#39;, &#39;indexBigDates&#39;, &#39;ini&#39;, &#39;indexPositionTable&#39;, &#39;_KO152 DAY 15&#39;, &#39;_KO10 DAY 20&#39;, &#39;loc&#39;, &#39;created&#39;, &#39;159&#39;, &#39;shadowIndexHead&#39;, &#39;mp4&#39;, &#39;SnowLeopard&#39;, &#39;2&#39;, &#39;_KO12 day 15&#39;, &#39;donotpresent&#39;, &#39;Trashes&#39;, &#39;_KO10 DAY 15&#39;, &#39;indexArrays&#39;, &#39;bin&#39;, &#39;shadow&#39;, &#39;1&#39;, &#39;_KO14 day 20&#39;, &#39;dat&#39;, &#39;_KO152 Day20&#39;, &#39;modified&#39;]
 </pre></div>
 </div>
 </div>
@@ -615,7 +614,9 @@ Wall time: 93.8 ms
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of videos in 11D9-5C57: 1102
 Number of videos in 5161-4A93: 528
-Number of videos in 9B57-8640: 673
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of videos in 9B57-8640: 673
 </pre></div>
 </div>
 </div>
@@ -683,7 +684,9 @@ Number of videos in 9B57-8640: 673
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of videos before filtering: 1102, after: 924
 Length of videos before filtering:  528, after: 439
-Length of videos before filtering:  673, after: 553
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of videos before filtering:  673, after: 553
 </pre></div>
 </div>
 </div>
@@ -733,7 +736,10 @@ Length of videos before filtering:  673, after: 553
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [00:00&lt;00:00, 118126.83it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1916 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [00:00&lt;00:00, 213827.70it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/
@@ -867,7 +873,658 @@ Length of videos before filtering:  673, after: 553
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [00:26&lt;00:00, 71.26it/s] 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1916 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 8/1916 [00:00&lt;00:25, 73.72it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|          | 17/1916 [00:00&lt;00:23, 80.32it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|▏         | 26/1916 [00:00&lt;00:23, 80.56it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▏         | 35/1916 [00:00&lt;00:24, 77.60it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▏         | 43/1916 [00:00&lt;00:24, 76.61it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|▎         | 52/1916 [00:00&lt;00:23, 80.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|▎         | 61/1916 [00:00&lt;00:22, 81.69it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▎         | 70/1916 [00:00&lt;00:22, 82.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▍         | 80/1916 [00:00&lt;00:21, 86.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|▍         | 89/1916 [00:01&lt;00:22, 82.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|▌         | 98/1916 [00:01&lt;00:23, 78.29it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|▌         | 106/1916 [00:01&lt;00:23, 76.38it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|▌         | 115/1916 [00:01&lt;00:22, 78.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|▋         | 123/1916 [00:01&lt;00:30, 59.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|▋         | 130/1916 [00:01&lt;00:30, 59.18it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|▋         | 137/1916 [00:01&lt;00:30, 58.28it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 146/1916 [00:02&lt;00:27, 64.52it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 154/1916 [00:02&lt;00:26, 66.24it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 161/1916 [00:02&lt;00:26, 66.52it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|▉         | 169/1916 [00:02&lt;00:25, 68.94it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|▉         | 177/1916 [00:02&lt;00:25, 68.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|▉         | 185/1916 [00:02&lt;00:25, 68.65it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|█         | 193/1916 [00:02&lt;00:24, 69.72it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|█         | 201/1916 [00:02&lt;00:24, 70.53it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|█         | 209/1916 [00:02&lt;00:24, 69.08it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|█▏        | 217/1916 [00:03&lt;00:23, 71.94it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▏        | 227/1916 [00:03&lt;00:21, 77.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▏        | 237/1916 [00:03&lt;00:20, 83.69it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 248/1916 [00:03&lt;00:18, 89.01it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 258/1916 [00:03&lt;00:18, 90.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▍        | 269/1916 [00:03&lt;00:17, 94.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|█▍        | 280/1916 [00:03&lt;00:17, 95.05it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|█▌        | 290/1916 [00:03&lt;00:17, 92.56it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▌        | 300/1916 [00:03&lt;00:18, 89.06it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▌        | 309/1916 [00:04&lt;00:19, 84.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|█▋        | 318/1916 [00:04&lt;00:19, 81.22it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|█▋        | 328/1916 [00:04&lt;00:18, 85.68it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█▊        | 337/1916 [00:04&lt;00:18, 83.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█▊        | 346/1916 [00:04&lt;00:18, 83.53it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|█▊        | 355/1916 [00:04&lt;00:18, 83.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|█▉        | 364/1916 [00:04&lt;00:18, 83.56it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|█▉        | 373/1916 [00:04&lt;00:18, 83.71it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|█▉        | 382/1916 [00:04&lt;00:18, 84.28it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|██        | 391/1916 [00:05&lt;00:18, 81.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|██        | 400/1916 [00:05&lt;00:18, 80.99it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|██▏       | 409/1916 [00:05&lt;00:19, 78.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██▏       | 418/1916 [00:05&lt;00:18, 80.48it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██▏       | 427/1916 [00:05&lt;00:18, 80.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|██▎       | 436/1916 [00:05&lt;00:18, 80.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|██▎       | 445/1916 [00:05&lt;00:18, 78.05it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|██▎       | 455/1916 [00:05&lt;00:17, 82.55it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|██▍       | 464/1916 [00:05&lt;00:18, 79.26it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▍       | 472/1916 [00:06&lt;00:18, 77.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 481/1916 [00:06&lt;00:18, 77.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|██▌       | 489/1916 [00:06&lt;00:18, 76.06it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|██▌       | 498/1916 [00:06&lt;00:17, 79.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|██▋       | 507/1916 [00:06&lt;00:17, 81.32it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██▋       | 516/1916 [00:06&lt;00:17, 78.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██▋       | 525/1916 [00:06&lt;00:17, 80.17it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|██▊       | 534/1916 [00:06&lt;00:17, 79.55it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|██▊       | 544/1916 [00:06&lt;00:16, 83.30it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▉       | 553/1916 [00:07&lt;00:16, 83.56it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▉       | 562/1916 [00:07&lt;00:16, 83.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|██▉       | 571/1916 [00:07&lt;00:15, 84.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 580/1916 [00:07&lt;00:16, 81.01it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███       | 589/1916 [00:07&lt;00:16, 81.54it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███       | 598/1916 [00:07&lt;00:16, 78.28it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|███▏      | 607/1916 [00:07&lt;00:16, 80.77it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|███▏      | 616/1916 [00:07&lt;00:16, 80.80it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 625/1916 [00:07&lt;00:16, 78.18it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 633/1916 [00:08&lt;00:18, 69.78it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 641/1916 [00:08&lt;00:20, 62.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███▍      | 648/1916 [00:08&lt;00:21, 57.91it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███▍      | 655/1916 [00:08&lt;00:21, 60.00it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▍      | 662/1916 [00:08&lt;00:21, 59.65it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▍      | 669/1916 [00:08&lt;00:20, 62.00it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▌      | 679/1916 [00:08&lt;00:17, 71.47it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███▌      | 688/1916 [00:08&lt;00:16, 75.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███▋      | 696/1916 [00:09&lt;00:17, 69.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|███▋      | 704/1916 [00:09&lt;00:17, 70.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|███▋      | 712/1916 [00:09&lt;00:16, 71.41it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 720/1916 [00:09&lt;00:16, 72.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 729/1916 [00:09&lt;00:15, 74.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 737/1916 [00:09&lt;00:15, 76.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|███▉      | 746/1916 [00:09&lt;00:15, 76.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|███▉      | 754/1916 [00:09&lt;00:15, 74.99it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|███▉      | 763/1916 [00:09&lt;00:14, 79.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 771/1916 [00:10&lt;00:14, 78.47it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|████      | 780/1916 [00:10&lt;00:14, 80.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|████      | 789/1916 [00:10&lt;00:14, 78.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████▏     | 797/1916 [00:10&lt;00:14, 78.60it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████▏     | 806/1916 [00:10&lt;00:14, 79.25it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 816/1916 [00:10&lt;00:13, 83.30it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 825/1916 [00:10&lt;00:13, 81.40it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▎     | 834/1916 [00:10&lt;00:13, 82.49it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▍     | 843/1916 [00:10&lt;00:13, 80.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▍     | 852/1916 [00:11&lt;00:13, 78.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|████▍     | 861/1916 [00:11&lt;00:13, 80.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|████▌     | 870/1916 [00:11&lt;00:13, 79.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████▌     | 878/1916 [00:11&lt;00:13, 78.35it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████▌     | 886/1916 [00:11&lt;00:13, 75.55it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|████▋     | 894/1916 [00:11&lt;00:13, 75.73it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|████▋     | 904/1916 [00:11&lt;00:12, 79.78it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 912/1916 [00:11&lt;00:12, 78.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 920/1916 [00:11&lt;00:13, 75.94it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|████▊     | 932/1916 [00:12&lt;00:11, 85.18it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|████▉     | 941/1916 [00:12&lt;00:11, 82.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|████▉     | 950/1916 [00:12&lt;00:12, 76.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 958/1916 [00:12&lt;00:12, 76.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 966/1916 [00:12&lt;00:12, 77.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████     | 974/1916 [00:12&lt;00:12, 74.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████▏    | 982/1916 [00:12&lt;00:12, 72.30it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|█████▏    | 991/1916 [00:12&lt;00:12, 76.78it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|█████▏    | 999/1916 [00:12&lt;00:12, 76.40it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|█████▎    | 1008/1916 [00:13&lt;00:11, 78.49it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|█████▎    | 1017/1916 [00:13&lt;00:11, 80.63it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████▎    | 1027/1916 [00:13&lt;00:10, 83.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████▍    | 1036/1916 [00:13&lt;00:10, 83.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|█████▍    | 1045/1916 [00:13&lt;00:10, 83.91it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|█████▌    | 1054/1916 [00:13&lt;00:10, 80.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|█████▌    | 1063/1916 [00:13&lt;00:10, 80.88it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▌    | 1072/1916 [00:13&lt;00:10, 78.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 1080/1916 [00:13&lt;00:10, 76.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 1088/1916 [00:14&lt;00:11, 75.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 1097/1916 [00:14&lt;00:10, 76.69it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 1105/1916 [00:14&lt;00:10, 75.29it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 1113/1916 [00:14&lt;00:10, 73.38it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|█████▊    | 1121/1916 [00:14&lt;00:10, 73.39it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|█████▉    | 1129/1916 [00:14&lt;00:10, 74.39it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|█████▉    | 1139/1916 [00:14&lt;00:09, 78.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|█████▉    | 1147/1916 [00:14&lt;00:13, 59.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 1154/1916 [00:15&lt;00:12, 60.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|██████    | 1161/1916 [00:15&lt;00:11, 62.99it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|██████    | 1169/1916 [00:15&lt;00:11, 65.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|██████▏   | 1176/1916 [00:15&lt;00:11, 65.00it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▏   | 1186/1916 [00:15&lt;00:09, 73.46it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▏   | 1194/1916 [00:15&lt;00:10, 67.61it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████▎   | 1201/1916 [00:15&lt;00:10, 66.69it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████▎   | 1209/1916 [00:15&lt;00:10, 68.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████▎   | 1217/1916 [00:15&lt;00:10, 69.25it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████▍   | 1227/1916 [00:16&lt;00:09, 76.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████▍   | 1236/1916 [00:16&lt;00:08, 78.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████▍   | 1244/1916 [00:16&lt;00:08, 77.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████▌   | 1252/1916 [00:16&lt;00:08, 75.48it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|██████▌   | 1261/1916 [00:16&lt;00:08, 76.37it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|██████▌   | 1269/1916 [00:16&lt;00:08, 76.52it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 1278/1916 [00:16&lt;00:07, 80.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 1288/1916 [00:16&lt;00:07, 84.48it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|██████▊   | 1297/1916 [00:16&lt;00:07, 81.63it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|██████▊   | 1306/1916 [00:17&lt;00:07, 80.24it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▊   | 1315/1916 [00:17&lt;00:07, 78.28it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▉   | 1324/1916 [00:17&lt;00:07, 79.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|██████▉   | 1333/1916 [00:17&lt;00:07, 80.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 1342/1916 [00:17&lt;00:07, 80.80it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████   | 1351/1916 [00:17&lt;00:07, 79.86it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████   | 1359/1916 [00:17&lt;00:07, 75.84it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████▏  | 1368/1916 [00:17&lt;00:06, 79.51it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|███████▏  | 1378/1916 [00:17&lt;00:06, 83.80it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|███████▏  | 1387/1916 [00:18&lt;00:06, 84.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|███████▎  | 1396/1916 [00:18&lt;00:06, 85.44it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|███████▎  | 1406/1916 [00:18&lt;00:05, 89.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|███████▍  | 1415/1916 [00:18&lt;00:05, 89.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|███████▍  | 1425/1916 [00:18&lt;00:05, 91.32it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▍  | 1435/1916 [00:18&lt;00:05, 88.55it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 1444/1916 [00:18&lt;00:05, 82.91it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████▌  | 1453/1916 [00:18&lt;00:05, 81.01it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████▋  | 1462/1916 [00:18&lt;00:05, 77.39it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████▋  | 1470/1916 [00:19&lt;00:05, 77.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████▋  | 1478/1916 [00:19&lt;00:05, 77.48it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|███████▊  | 1486/1916 [00:19&lt;00:05, 78.04it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|███████▊  | 1494/1916 [00:19&lt;00:05, 77.44it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|███████▊  | 1502/1916 [00:19&lt;00:05, 77.53it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 79%|███████▉  | 1510/1916 [00:19&lt;00:05, 74.95it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 79%|███████▉  | 1520/1916 [00:19&lt;00:06, 60.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|███████▉  | 1530/1916 [00:19&lt;00:05, 68.70it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 1540/1916 [00:20&lt;00:04, 76.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|████████  | 1550/1916 [00:20&lt;00:04, 80.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|████████▏ | 1559/1916 [00:20&lt;00:04, 80.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|████████▏ | 1568/1916 [00:20&lt;00:04, 76.74it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|████████▏ | 1577/1916 [00:20&lt;00:04, 78.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 83%|████████▎ | 1585/1916 [00:20&lt;00:04, 77.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 83%|████████▎ | 1593/1916 [00:20&lt;00:04, 76.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████▎ | 1601/1916 [00:20&lt;00:04, 75.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████▍ | 1609/1916 [00:20&lt;00:04, 75.98it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████▍ | 1617/1916 [00:21&lt;00:04, 74.17it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|████████▍ | 1626/1916 [00:21&lt;00:03, 77.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|████████▌ | 1636/1916 [00:21&lt;00:03, 81.28it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▌ | 1647/1916 [00:21&lt;00:03, 86.97it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▋ | 1657/1916 [00:21&lt;00:02, 89.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████▋ | 1667/1916 [00:21&lt;00:02, 91.79it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 1677/1916 [00:21&lt;00:02, 85.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 1686/1916 [00:21&lt;00:02, 82.44it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 1695/1916 [00:21&lt;00:02, 77.70it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 89%|████████▉ | 1704/1916 [00:22&lt;00:02, 80.73it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|████████▉ | 1715/1916 [00:22&lt;00:02, 86.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 1725/1916 [00:22&lt;00:02, 87.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|█████████ | 1734/1916 [00:22&lt;00:02, 87.99it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|█████████ | 1743/1916 [00:22&lt;00:02, 81.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|█████████▏| 1753/1916 [00:22&lt;00:01, 85.35it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|█████████▏| 1763/1916 [00:22&lt;00:01, 86.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|█████████▏| 1772/1916 [00:22&lt;00:01, 81.72it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|█████████▎| 1781/1916 [00:22&lt;00:01, 81.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|█████████▎| 1790/1916 [00:23&lt;00:01, 81.95it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▍| 1800/1916 [00:23&lt;00:01, 86.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▍| 1809/1916 [00:23&lt;00:01, 81.00it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|█████████▍| 1818/1916 [00:23&lt;00:01, 77.22it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|█████████▌| 1826/1916 [00:23&lt;00:01, 77.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 96%|█████████▌| 1836/1916 [00:23&lt;00:00, 81.07it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 96%|█████████▋| 1845/1916 [00:23&lt;00:00, 83.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|█████████▋| 1854/1916 [00:23&lt;00:00, 84.68it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|█████████▋| 1863/1916 [00:23&lt;00:00, 84.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|█████████▊| 1872/1916 [00:24&lt;00:00, 84.29it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|█████████▊| 1881/1916 [00:24&lt;00:00, 82.07it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 99%|█████████▊| 1890/1916 [00:24&lt;00:00, 79.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████▉| 1907/1916 [00:24&lt;00:00, 102.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [00:24&lt;00:00, 78.42it/s] 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1509,28 +2166,28 @@ Length of videos before filtering:  673, after: 553
   </thead>
   <tbody>
     <tr>
-      <th>1366</th>
-      <td>/media/andre/9B57-8640/WT2/WT2 day 20 (6).mp4</td>
+      <th>1716</th>
+      <td>/media/andre/9B57-8640/SACHIN/KO12 Day 15 By T...</td>
       <td>mp4</td>
-      <td>318255.0</td>
+      <td>318225.0</td>
       <td>30.0</td>
       <td>704</td>
       <td>480</td>
     </tr>
     <tr>
-      <th>175</th>
-      <td>/media/andre/11D9-5C57/WT3 day 10/WT3 day 10 (...</td>
-      <td>mp4</td>
-      <td>192737.0</td>
-      <td>30.0</td>
-      <td>704</td>
-      <td>480</td>
-    </tr>
-    <tr>
-      <th>1194</th>
+      <th>1207</th>
       <td>/media/andre/5161-4A93/WT72 Day 20/WT12 D15/WT...</td>
       <td>mp4</td>
-      <td>192737.0</td>
+      <td>192707.0</td>
+      <td>30.0</td>
+      <td>704</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <th>1328</th>
+      <td>/media/andre/5161-4A93/WT72 D15/WT72 D15(21).mp4</td>
+      <td>mp4</td>
+      <td>192709.0</td>
       <td>30.0</td>
       <td>704</td>
       <td>480</td>
@@ -1666,28 +2323,28 @@ Length of videos before filtering:  673, after: 553
   </thead>
   <tbody>
     <tr>
-      <th>1911</th>
-      <td>/media/andre/9B57-8640/AVIDEOS/stef videos/M2U...</td>
-      <td>MPG</td>
-      <td>94226.0</td>
-      <td>29.97003</td>
-      <td>720</td>
-      <td>480</td>
-    </tr>
-    <tr>
-      <th>1910</th>
-      <td>/media/andre/9B57-8640/AVIDEOS/stef videos/M2U...</td>
-      <td>MPG</td>
-      <td>94425.0</td>
-      <td>29.97003</td>
-      <td>720</td>
-      <td>480</td>
-    </tr>
-    <tr>
       <th>1894</th>
       <td>/media/andre/9B57-8640/AVIDEOS/M2U00179.MPG</td>
       <td>MPG</td>
       <td>94290.0</td>
+      <td>29.97003</td>
+      <td>720</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <th>1891</th>
+      <td>/media/andre/9B57-8640/AVIDEOS/M2U00176.MPG</td>
+      <td>MPG</td>
+      <td>94546.0</td>
+      <td>29.97003</td>
+      <td>720</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <th>1909</th>
+      <td>/media/andre/9B57-8640/AVIDEOS/M2U00194.MPG</td>
+      <td>MPG</td>
+      <td>94465.0</td>
       <td>29.97003</td>
       <td>720</td>
       <td>480</td>
@@ -1817,7 +2474,37 @@ mkdir -p /media/andre/maternal/11D9\-5C57 &amp;&amp; ffmpeg -y -i /media/andre/1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 12/12 [00:00&lt;00:00, 15.53it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/23 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|▊         | 2/23 [00:00&lt;00:01, 17.77it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|█▋        | 4/23 [00:00&lt;00:01, 18.19it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 7/23 [00:00&lt;00:00, 20.72it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 10/23 [00:00&lt;00:00, 22.15it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 13/23 [00:00&lt;00:00, 24.38it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|██████▉   | 16/23 [00:00&lt;00:00, 25.75it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████▋ | 20/23 [00:00&lt;00:00, 29.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 23/23 [00:00&lt;00:00, 22.91it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 23/23 [00:00&lt;00:00, 23.27it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1951,9 +2638,108 @@ mkdir -p /media/andre/maternal/11D9\-5C57 &amp;&amp; ffmpeg -y -i /media/andre/1
       <td>/media/andre/11D9-5C57/ch07_20141030034933.mp4</td>
       <td>/media/andre/maternal/11D9-5C57/ch07_201410300...</td>
       <td>192708</td>
-      <td>0</td>
+      <td>192708</td>
       <td>1066.1</td>
-      <td>157.0</td>
+      <td>226.9</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>/media/andre/11D9-5C57/ch02_20141004031546.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch02_201410040...</td>
+      <td>901309</td>
+      <td>192708</td>
+      <td>1066.2</td>
+      <td>206.6</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>/media/andre/11D9-5C57/ch02_20141004050252.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch02_201410040...</td>
+      <td>192709</td>
+      <td>192709</td>
+      <td>1066.2</td>
+      <td>193.9</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>/media/andre/11D9-5C57/ch02_20141004064957.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch02_201410040...</td>
+      <td>192739</td>
+      <td>192739</td>
+      <td>1066.3</td>
+      <td>390.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>/media/andre/11D9-5C57/ch02_20141004083704.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch02_201410040...</td>
+      <td>192740</td>
+      <td>192740</td>
+      <td>1066.2</td>
+      <td>631.4</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>/media/andre/11D9-5C57/ch02_20141004173235.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch02_201410041...</td>
+      <td>192709</td>
+      <td>192709</td>
+      <td>1066.1</td>
+      <td>616.1</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>/media/andre/11D9-5C57/ch02_20141004191940.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch02_201410041...</td>
+      <td>72593</td>
+      <td>72593</td>
+      <td>401.6</td>
+      <td>224.4</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>/media/andre/11D9-5C57/ch02_20141005102455.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch02_201410051...</td>
+      <td>219</td>
+      <td>219</td>
+      <td>1.3</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>/media/andre/11D9-5C57/ch04_20141026223910_001...</td>
+      <td>/media/andre/maternal/11D9-5C57/ch04_201410262...</td>
+      <td>192676</td>
+      <td>192676</td>
+      <td>1066.0</td>
+      <td>137.8</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>/media/andre/11D9-5C57/ch04_20141027002615_001...</td>
+      <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
+      <td>192706</td>
+      <td>192706</td>
+      <td>1066.2</td>
+      <td>140.4</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>/media/andre/11D9-5C57/ch04_20141027021320_001...</td>
+      <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
+      <td>192706</td>
+      <td>192706</td>
+      <td>1066.2</td>
+      <td>110.9</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>/media/andre/11D9-5C57/ch04_20141027040025_001...</td>
+      <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
+      <td>192708</td>
+      <td>0</td>
+      <td>1066.2</td>
+      <td>110.6</td>
     </tr>
   </tbody>
 </table>
@@ -1993,59 +2779,59 @@ mkdir -p /media/andre/maternal/11D9\-5C57 &amp;&amp; ffmpeg -y -i /media/andre/1
   <tbody>
     <tr>
       <th>count</th>
-      <td>12.000000</td>
-      <td>12.000000</td>
-      <td>12.000000</td>
-      <td>12.000000</td>
+      <td>23.000000</td>
+      <td>23.000000</td>
+      <td>23.000000</td>
+      <td>23.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>169936.833333</td>
-      <td>153877.833333</td>
-      <td>940.150000</td>
-      <td>221.333333</td>
+      <td>198045.913043</td>
+      <td>158858.565217</td>
+      <td>925.230435</td>
+      <td>238.634783</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>53189.556666</td>
-      <td>71595.912683</td>
-      <td>294.258944</td>
-      <td>138.920450</td>
+      <td>163801.763922</td>
+      <td>67286.935757</td>
+      <td>320.636755</td>
+      <td>170.750577</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>55063.000000</td>
+      <td>219.000000</td>
       <td>0.000000</td>
-      <td>304.600000</td>
-      <td>52.900000</td>
+      <td>1.300000</td>
+      <td>0.600000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>192698.500000</td>
-      <td>158775.500000</td>
-      <td>1066.075000</td>
-      <td>113.825000</td>
+      <td>192691.000000</td>
+      <td>192676.000000</td>
+      <td>1066.050000</td>
+      <td>112.850000</td>
     </tr>
     <tr>
       <th>50%</th>
       <td>192708.000000</td>
-      <td>192707.500000</td>
+      <td>192708.000000</td>
       <td>1066.100000</td>
-      <td>197.750000</td>
+      <td>206.600000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>192708.500000</td>
-      <td>192708.500000</td>
+      <td>192709.500000</td>
+      <td>192709.000000</td>
       <td>1066.200000</td>
-      <td>328.700000</td>
+      <td>329.500000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>192738.000000</td>
-      <td>192738.000000</td>
+      <td>901309.000000</td>
+      <td>192740.000000</td>
       <td>1066.300000</td>
-      <td>510.000000</td>
+      <td>631.400000</td>
     </tr>
   </tbody>
 </table>
@@ -2069,7 +2855,18 @@ mkdir -p /media/andre/maternal/11D9\-5C57 &amp;&amp; ffmpeg -y -i /media/andre/1
 8          0
 9          0
 10         0
-11    192708
+11         0
+12    708601
+13         0
+14         0
+15         0
+16         0
+17         0
+18         0
+19         0
+20         0
+21         0
+22    192708
 dtype: int64
 </pre></div>
 </div>
