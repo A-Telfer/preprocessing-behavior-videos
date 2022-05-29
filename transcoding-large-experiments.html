@@ -464,7 +464,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="what-s-covered-here">
 <h3>What’s covered here<a class="headerlink" href="#what-s-covered-here" title="Permalink to this headline">¶</a></h3>
 <p>Here we explore a large experiment with an inconsistent structure and lots of irrelevant data</p>
-<p>We’re going to focus on a few main tasks</p>
+<p>We’re going to focus on a few main tasks (and the validation of them)</p>
 <ol class="simple">
 <li><p>Exploring the file systems: Finding all of the relevant videos</p></li>
 <li><p>Video details: Getting high level details from them to later verify everything was copied correctly (such as time). We also want to see if the videos themselves are very different and need lots of preprocessing.</p></li>
@@ -477,11 +477,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="what-s-not-covered-here">
 <h3>What’s not covered here<a class="headerlink" href="#what-s-not-covered-here" title="Permalink to this headline">¶</a></h3>
-<p>This notebook is aimed at researchers who already have some knowledge but may want to expand/improve their methods using the tips here</p>
+<p>This notebook is aimed at researchers, in order to understand what’s going on it’s helpful to be somewhat familiar with</p>
 <ul class="simple">
-<li><p>Python knowledge and some basics including some basic bash is assumed</p></li>
-<li><p>knowledge of ffmpeg is helpful</p></li>
-<li><p>With some basics, missing knowledge is mostly searchable.</p></li>
+<li><p>python</p></li>
+<li><p>bash</p></li>
+<li><p>ffmpeg</p></li>
 </ul>
 <p>For questions or suggestions, reach out to me at <a class="reference external" href="mailto:andretelfer&#37;&#52;&#48;cmail&#46;carleton&#46;ca">andretelfer<span>&#64;</span>cmail<span>&#46;</span>carleton<span>&#46;</span>ca</a></p>
 </div>
@@ -555,8 +555,8 @@ const thebe_selector_output = ".output, .cell_output"
 Drive 5161-4A93 is 491.29GB
 Drive 9B57-8640 is 705.03GB
 Total: 2193.44GB
-CPU times: user 24.4 ms, sys: 28.6 ms, total: 53 ms
-Wall time: 52 ms
+CPU times: user 66.3 ms, sys: 28.1 ms, total: 94.4 ms
+Wall time: 93.8 ms
 </pre></div>
 </div>
 </div>
@@ -589,7 +589,7 @@ Wall time: 52 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extensions:  [&#39;created&#39;, &#39;state&#39;, &#39;ini&#39;, &#39;1&#39;, &#39;indexGroups&#39;, &#39;9&#39;, &#39;indexHead&#39;, &#39;10&#39;, &#39;indexDirectory&#39;, &#39;txt&#39;, &#39;loc&#39;, &#39;bin&#39;, &#39;_KO14 day 20&#39;, &#39;shadowIndexArrays&#39;, &#39;_KO16 day 15&#39;, &#39;indexIds&#39;, &#39;shadowIndexTermIds&#39;, &#39;_KO12 day 15&#39;, &#39;wbverify&#39;, &#39;shadow&#39;, &#39;shadowIndexDirectory&#39;, &#39;modified&#39;, &#39;zip&#39;, &#39;shadowIndexCompactDirectory&#39;, &#39;donotpresent&#39;, &#39;directoryStoreFile&#39;, &#39;indexBigDates&#39;, &#39;_KO112 D15&#39;, &#39;mp4&#39;, &#39;shadowIndexHead&#39;, &#39;indexPositionTable&#39;, &#39;_KO16 day 20&#39;, &#39;Trashes&#39;, &#39;_WT3 day 15&#39;, &#39;MPG&#39;, &#39;shadowIndexGroups&#39;, &#39;indexTermIds&#39;, &#39;_KO152 Day20&#39;, &#39;dat&#39;, &#39;plist&#39;, &#39;indexArrays&#39;, &#39;Cab&#39;, &#39;shadowIndexPositionTable&#39;, &#39;SnowLeopard&#39;, &#39;indexUpdates&#39;, &#39;db&#39;, &#39;2&#39;, &#39;_KO15 day 15&#39;, &#39;indexPositions&#39;, &#39;wbcat&#39;, &#39;_KO152 DAY 15&#39;, &#39;indexPostings&#39;, &#39;indexCompactDirectory&#39;, &#39;_KO15 Day 20&#39;, &#39;_KO10 DAY 20&#39;, &#39;updates&#39;, &#39;_KO10 DAY 15&#39;, &#39;159&#39;, &#39;_ko9 day 20&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extensions:  [&#39;shadowIndexHead&#39;, &#39;loc&#39;, &#39;indexDirectory&#39;, &#39;dat&#39;, &#39;indexHead&#39;, &#39;updates&#39;, &#39;shadow&#39;, &#39;indexBigDates&#39;, &#39;mp4&#39;, &#39;_ko9 day 20&#39;, &#39;txt&#39;, &#39;indexTermIds&#39;, &#39;MPG&#39;, &#39;shadowIndexPositionTable&#39;, &#39;1&#39;, &#39;_KO15 Day 20&#39;, &#39;shadowIndexTermIds&#39;, &#39;modified&#39;, &#39;2&#39;, &#39;indexUpdates&#39;, &#39;shadowIndexDirectory&#39;, &#39;indexPositions&#39;, &#39;indexCompactDirectory&#39;, &#39;_KO16 day 20&#39;, &#39;_KO14 day 20&#39;, &#39;db&#39;, &#39;indexPostings&#39;, &#39;directoryStoreFile&#39;, &#39;_WT3 day 15&#39;, &#39;_KO10 DAY 15&#39;, &#39;SnowLeopard&#39;, &#39;indexGroups&#39;, &#39;wbcat&#39;, &#39;_KO152 Day20&#39;, &#39;indexArrays&#39;, &#39;indexPositionTable&#39;, &#39;Cab&#39;, &#39;donotpresent&#39;, &#39;_KO112 D15&#39;, &#39;_KO12 day 15&#39;, &#39;_KO152 DAY 15&#39;, &#39;9&#39;, &#39;plist&#39;, &#39;shadowIndexGroups&#39;, &#39;Trashes&#39;, &#39;bin&#39;, &#39;159&#39;, &#39;indexIds&#39;, &#39;10&#39;, &#39;shadowIndexCompactDirectory&#39;, &#39;wbverify&#39;, &#39;_KO15 day 15&#39;, &#39;_KO16 day 15&#39;, &#39;ini&#39;, &#39;_KO10 DAY 20&#39;, &#39;created&#39;, &#39;zip&#39;, &#39;state&#39;, &#39;shadowIndexArrays&#39;]
 </pre></div>
 </div>
 </div>
@@ -733,7 +733,7 @@ Length of videos before filtering:  673, after: 553
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [00:00&lt;00:00, 255023.05it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [00:00&lt;00:00, 118126.83it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/
@@ -867,7 +867,7 @@ Length of videos before filtering:  673, after: 553
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [02:55&lt;00:00, 10.91it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1916/1916 [00:26&lt;00:00, 71.26it/s] 
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1509,28 +1509,28 @@ Length of videos before filtering:  673, after: 553
   </thead>
   <tbody>
     <tr>
-      <th>145</th>
-      <td>/media/andre/11D9-5C57/WT3 day 15/WT3 day 15 (...</td>
+      <th>1366</th>
+      <td>/media/andre/9B57-8640/WT2/WT2 day 20 (6).mp4</td>
       <td>mp4</td>
-      <td>192708.0</td>
+      <td>318255.0</td>
       <td>30.0</td>
       <td>704</td>
       <td>480</td>
     </tr>
     <tr>
-      <th>1798</th>
-      <td>/media/andre/9B57-8640/ko9 day 20/KO9 day 20 (...</td>
+      <th>175</th>
+      <td>/media/andre/11D9-5C57/WT3 day 10/WT3 day 10 (...</td>
       <td>mp4</td>
-      <td>318285.0</td>
+      <td>192737.0</td>
       <td>30.0</td>
       <td>704</td>
       <td>480</td>
     </tr>
     <tr>
-      <th>403</th>
-      <td>/media/andre/11D9-5C57/WT82 DAY 15/WT82 Day 15...</td>
+      <th>1194</th>
+      <td>/media/andre/5161-4A93/WT72 Day 20/WT12 D15/WT...</td>
       <td>mp4</td>
-      <td>192708.0</td>
+      <td>192737.0</td>
       <td>30.0</td>
       <td>704</td>
       <td>480</td>
@@ -1666,28 +1666,28 @@ Length of videos before filtering:  673, after: 553
   </thead>
   <tbody>
     <tr>
-      <th>1888</th>
-      <td>/media/andre/9B57-8640/AVIDEOS/M2U00173.MPG</td>
+      <th>1911</th>
+      <td>/media/andre/9B57-8640/AVIDEOS/stef videos/M2U...</td>
       <td>MPG</td>
-      <td>94227.0</td>
+      <td>94226.0</td>
       <td>29.97003</td>
       <td>720</td>
       <td>480</td>
     </tr>
     <tr>
-      <th>1904</th>
-      <td>/media/andre/9B57-8640/AVIDEOS/M2U00189.MPG</td>
+      <th>1910</th>
+      <td>/media/andre/9B57-8640/AVIDEOS/stef videos/M2U...</td>
       <td>MPG</td>
-      <td>94481.0</td>
+      <td>94425.0</td>
       <td>29.97003</td>
       <td>720</td>
       <td>480</td>
     </tr>
     <tr>
-      <th>1895</th>
-      <td>/media/andre/9B57-8640/AVIDEOS/M2U00180.MPG</td>
+      <th>1894</th>
+      <td>/media/andre/9B57-8640/AVIDEOS/M2U00179.MPG</td>
       <td>MPG</td>
-      <td>94286.0</td>
+      <td>94290.0</td>
       <td>29.97003</td>
       <td>720</td>
       <td>480</td>
@@ -1718,13 +1718,18 @@ Length of videos before filtering:  673, after: 553
 <p>Instead we’ll just transcode them over in their original structure for now. The transcoded videos will still be smaller, and we can safely manually reorganize them without risking losing anything since we still have the originals.</p>
 <div class="section" id="creating-a-bash-file-for-long-runs">
 <h3>Creating a bash file for long runs<a class="headerlink" href="#creating-a-bash-file-for-long-runs" title="Permalink to this headline">¶</a></h3>
-<p>The following script generates a bash file that can be run to transcode all of the files</p>
+<p>There are many ways to transcode the files in python, however when running long scripts I often use bash. The following script generates a bash file that can be run to transcode all of the files.</p>
 <p>The tool we use to actually do the transcoding is called ffmpeg. It’s very versatile, and has way too many options to learn all of them, so you can search up what you need when you need them.</p>
+<p>We can do things like resizing the video or changing quality, in the below command I decrease the video quality slightly using <code class="docutils literal notranslate"><span class="pre">-crf</span> <span class="pre">24</span></code>. This should shrinkg their size a lot.</p>
+<p>Example ffmpeg commands</p>
 <p>ffmpeg commands don’t have to be complicated, a simple one would be</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg -i &lt;your-input-file&gt; &lt;your-output-file&gt;
 </pre></div>
 </div>
-<p>We can do things like resizing the video or changing quality, in the below command I decrease the video quality slightly using <code class="docutils literal notranslate"><span class="pre">-crf</span> <span class="pre">24</span></code>. This should shrinkg their size a lot.</p>
+<p>Hardware encoding (Fast but difficult to control quality)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames <span class="m">4</span> -i <span class="o">{</span>input_file<span class="o">}</span> -c:v h264_nvenc <span class="o">{</span>output_file<span class="o">}</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
@@ -1741,8 +1746,8 @@ Length of videos before filtering:  673, after: 553
         
         <span class="n">cmd</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s2">&quot;mkdir -p </span><span class="si">{output_dir}</span><span class="s2"> &amp;&amp; &quot;</span> <span class="c1"># make a new directory if necessary</span>
-            <span class="s2">&quot;ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i </span><span class="si">{input_file}</span><span class="s2"> &quot;</span> <span class="c1"># the input file and flags</span>
-            <span class="s2">&quot;-c:v h264_nvenc -crf 24 -r 30 -an </span><span class="si">{output_file}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="c1"># the output file and flags</span>
+            <span class="s2">&quot;ffmpeg -y -i </span><span class="si">{input_file}</span><span class="s2"> &quot;</span> <span class="c1"># the input file and flags</span>
+            <span class="s2">&quot;-crf 18 -r 30 -an </span><span class="si">{output_file}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="c1"># the output file and flags</span>
         <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">output_dir</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">output_filepath</span><span class="o">.</span><span class="n">parent</span><span class="p">)),</span> 
             <span class="n">input_file</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">video</span><span class="p">)),</span> 
@@ -1764,9 +1769,9 @@ Length of videos before filtering:  673, after: 553
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir -p /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20 &amp;&amp; ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i /media/andre/11D9\-5C57/WT72\ DAY\ 20/wt72\ day\ 20\ \(28\)\.mp4 -c:v h264_nvenc -crf 24 -r 30 -an /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20/wt72\ day\ 20\ \(28\)\.mp4
-mkdir -p /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20 &amp;&amp; ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i /media/andre/11D9\-5C57/WT72\ DAY\ 20/wt72\ day\ 20\ \(29\)\.mp4 -c:v h264_nvenc -crf 24 -r 30 -an /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20/wt72\ day\ 20\ \(29\)\.mp4
-mkdir -p /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20 &amp;&amp; ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i /media/andre/11D9\-5C57/WT72\ DAY\ 20/wt72\ day\ 20\ \(30\)\.mp4 -c:v h264_nvenc -crf 24 -r 30 -an /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20/wt72\ day\ 20\ \(30\)\.mp4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir -p /media/andre/maternal/11D9\-5C57 &amp;&amp; ffmpeg -y -i /media/andre/11D9\-5C57/ch04_20141027002615\.mp4 -crf 18 -r 30 -an /media/andre/maternal/11D9\-5C57/ch04_20141027002615\.mp4
+mkdir -p /media/andre/maternal/11D9\-5C57 &amp;&amp; ffmpeg -y -i /media/andre/11D9\-5C57/ch07_20141030053638\.mp4 -crf 18 -r 30 -an /media/andre/maternal/11D9\-5C57/ch07_20141030053638\.mp4
+mkdir -p /media/andre/maternal/11D9\-5C57 &amp;&amp; ffmpeg -y -i /media/andre/11D9\-5C57/ch07_20141030072343\.mp4 -crf 18 -r 30 -an /media/andre/maternal/11D9\-5C57/ch07_20141030072343\.mp4
 </pre></div>
 </div>
 </div>
@@ -1812,7 +1817,7 @@ mkdir -p /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20 &amp;&amp; ffmpeg -y -hw
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 522/522 [00:34&lt;00:00, 15.33it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 12/12 [00:00&lt;00:00, 15.53it/s]
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1849,101 +1854,109 @@ mkdir -p /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20 &amp;&amp; ffmpeg -y -hw
       <td>192676</td>
       <td>192676</td>
       <td>1066.0</td>
-      <td>320.2</td>
+      <td>52.9</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>/media/andre/11D9-5C57/ch04_20141027002615.mp4</td>
-      <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
-      <td>192706</td>
-      <td>192706</td>
-      <td>1066.2</td>
-      <td>332.8</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>/media/andre/11D9-5C57/ch04_20141027021320.mp4</td>
       <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
       <td>192706</td>
       <td>192706</td>
       <td>1066.2</td>
-      <td>245.2</td>
+      <td>110.9</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>/media/andre/11D9-5C57/ch04_20141027040025.mp4</td>
       <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
       <td>192708</td>
       <td>192708</td>
       <td>1066.2</td>
-      <td>266.3</td>
+      <td>117.0</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>3</th>
       <td>/media/andre/11D9-5C57/ch04_20141027054731.mp4</td>
       <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
       <td>192736</td>
       <td>192736</td>
       <td>1066.3</td>
-      <td>252.6</td>
+      <td>114.8</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <th>4</th>
+      <td>/media/andre/11D9-5C57/ch04_20141027073438.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch04_201410270...</td>
+      <td>57074</td>
+      <td>57074</td>
+      <td>315.8</td>
+      <td>83.0</td>
     </tr>
     <tr>
-      <th>517</th>
-      <td>/media/andre/5161-4A93/ch02_20141004102411.mp4</td>
-      <td>/media/andre/maternal/5161-4A93/ch02_201410041...</td>
-      <td>192709</td>
-      <td>192709</td>
+      <th>5</th>
+      <td>/media/andre/11D9-5C57/ch07_20141029182333.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch07_201410291...</td>
+      <td>55063</td>
+      <td>55063</td>
+      <td>304.6</td>
+      <td>258.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>/media/andre/11D9-5C57/ch07_20141029185404.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch07_201410291...</td>
+      <td>192710</td>
+      <td>192710</td>
       <td>1066.1</td>
-      <td>1437.9</td>
+      <td>510.0</td>
     </tr>
     <tr>
-      <th>518</th>
-      <td>/media/andre/5161-4A93/ch02_20141004121116.mp4</td>
-      <td>/media/andre/maternal/5161-4A93/ch02_201410041...</td>
+      <th>7</th>
+      <td>/media/andre/11D9-5C57/ch07_20141029204109.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch07_201410292...</td>
       <td>192738</td>
       <td>192738</td>
       <td>1066.2</td>
-      <td>1449.6</td>
+      <td>327.9</td>
     </tr>
     <tr>
-      <th>519</th>
-      <td>/media/andre/5161-4A93/ch02_20141004135823.mp4</td>
-      <td>/media/andre/maternal/5161-4A93/ch02_201410041...</td>
-      <td>192709</td>
-      <td>192709</td>
+      <th>8</th>
+      <td>/media/andre/11D9-5C57/ch07_20141029222816.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch07_201410292...</td>
+      <td>192708</td>
+      <td>192708</td>
       <td>1066.1</td>
-      <td>1478.5</td>
+      <td>354.9</td>
     </tr>
     <tr>
-      <th>520</th>
-      <td>/media/andre/5161-4A93/ch02_20141004154528.mp4</td>
-      <td>/media/andre/maternal/5161-4A93/ch02_201410041...</td>
-      <td>192739</td>
-      <td>192739</td>
-      <td>1066.2</td>
-      <td>1388.8</td>
+      <th>9</th>
+      <td>/media/andre/11D9-5C57/ch07_20141030001521.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch07_201410300...</td>
+      <td>192707</td>
+      <td>192707</td>
+      <td>1066.1</td>
+      <td>238.5</td>
     </tr>
     <tr>
-      <th>521</th>
-      <td>/media/andre/5161-4A93/ch02_20141004173235.mp4</td>
-      <td>/media/andre/maternal/5161-4A93/ch02_201410041...</td>
-      <td>192709</td>
+      <th>10</th>
+      <td>/media/andre/11D9-5C57/ch07_20141030020226.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch07_201410300...</td>
+      <td>192708</td>
+      <td>192708</td>
+      <td>1066.1</td>
+      <td>331.1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>/media/andre/11D9-5C57/ch07_20141030034933.mp4</td>
+      <td>/media/andre/maternal/11D9-5C57/ch07_201410300...</td>
+      <td>192708</td>
       <td>0</td>
       <td>1066.1</td>
-      <td>429.6</td>
+      <td>157.0</td>
     </tr>
   </tbody>
 </table>
-<p>522 rows × 6 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1980,59 +1993,59 @@ mkdir -p /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20 &amp;&amp; ffmpeg -y -hw
   <tbody>
     <tr>
       <th>count</th>
-      <td>5.220000e+02</td>
-      <td>5.220000e+02</td>
-      <td>522.000000</td>
-      <td>522.000000</td>
+      <td>12.000000</td>
+      <td>12.000000</td>
+      <td>12.000000</td>
+      <td>12.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>-5.889765e+12</td>
-      <td>2.142034e+05</td>
-      <td>1009.165709</td>
-      <td>872.194061</td>
+      <td>169936.833333</td>
+      <td>153877.833333</td>
+      <td>940.150000</td>
+      <td>221.333333</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.345653e+14</td>
-      <td>1.672762e+05</td>
-      <td>193.161552</td>
-      <td>481.101912</td>
+      <td>53189.556666</td>
+      <td>71595.912683</td>
+      <td>294.258944</td>
+      <td>138.920450</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-3.074457e+15</td>
-      <td>0.000000e+00</td>
-      <td>0.600000</td>
-      <td>0.900000</td>
+      <td>55063.000000</td>
+      <td>0.000000</td>
+      <td>304.600000</td>
+      <td>52.900000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>1.927070e+05</td>
-      <td>1.927070e+05</td>
-      <td>1066.100000</td>
-      <td>409.600000</td>
+      <td>192698.500000</td>
+      <td>158775.500000</td>
+      <td>1066.075000</td>
+      <td>113.825000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>1.927090e+05</td>
-      <td>1.927090e+05</td>
+      <td>192708.000000</td>
+      <td>192707.500000</td>
       <td>1066.100000</td>
-      <td>831.500000</td>
+      <td>197.750000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>1.927380e+05</td>
-      <td>1.927380e+05</td>
-      <td>1066.300000</td>
-      <td>1288.550000</td>
+      <td>192708.500000</td>
+      <td>192708.500000</td>
+      <td>1066.200000</td>
+      <td>328.700000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>2.101409e+06</td>
-      <td>2.101411e+06</td>
+      <td>192738.000000</td>
+      <td>192738.000000</td>
       <td>1066.300000</td>
-      <td>2247.900000</td>
+      <td>510.000000</td>
     </tr>
   </tbody>
 </table>
@@ -2045,18 +2058,19 @@ mkdir -p /media/andre/maternal/11D9\-5C57/WT72\ DAY\ 20 &amp;&amp; ffmpeg -y -hw
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0           0
-1           0
-2           0
-3           0
-4           0
-        ...  
-517         0
-518         0
-519         0
-520         0
-521    192709
-Length: 522, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0          0
+1          0
+2          0
+3          0
+4          0
+5          0
+6          0
+7          0
+8          0
+9          0
+10         0
+11    192708
+dtype: int64
 </pre></div>
 </div>
 </div>
@@ -2081,7 +2095,7 @@ Length: 522, dtype: int64
     <span class="n">transcoded_cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">transcoded_file</span><span class="p">))</span>
     <span class="n">transcoded_cap</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_POS_FRAMES</span><span class="p">,</span> <span class="n">frame_idx</span><span class="p">)</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
     <span class="n">gs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
@@ -2100,9 +2114,11 @@ Length: 522, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/transcoding-large-experiments_63_0.png" src="_images/transcoding-large-experiments_63_0.png" />
-<img alt="_images/transcoding-large-experiments_63_1.png" src="_images/transcoding-large-experiments_63_1.png" />
-<img alt="_images/transcoding-large-experiments_63_2.png" src="_images/transcoding-large-experiments_63_2.png" />
+<img alt="_images/transcoding-large-experiments_64_0.png" src="_images/transcoding-large-experiments_64_0.png" />
+<img alt="_images/transcoding-large-experiments_64_1.png" src="_images/transcoding-large-experiments_64_1.png" />
+<img alt="_images/transcoding-large-experiments_64_2.png" src="_images/transcoding-large-experiments_64_2.png" />
+<img alt="_images/transcoding-large-experiments_64_3.png" src="_images/transcoding-large-experiments_64_3.png" />
+<img alt="_images/transcoding-large-experiments_64_4.png" src="_images/transcoding-large-experiments_64_4.png" />
 </div>
 </div>
 </div>
