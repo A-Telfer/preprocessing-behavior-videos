@@ -235,7 +235,8 @@ for video in tqdm(all_videos):
         'frames': int(cap.get(cv2.CAP_PROP_FRAME_COUNT)),
         'fps': float(cap.get(cv2.CAP_PROP_FPS)),
         'width': int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),
-        'height': int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        'height': int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)),
+        'size': video.stat().st_size
     }
     metadata.append(_metadata)
     
@@ -368,16 +369,14 @@ print(f"We're not going to reorganize our {len(all_videos)} videos here.")
 # Example ffmpeg commands 
 # 
 # ffmpeg commands don't have to be complicated, a simple one would be 
-# ```bash
+# ```
 # ffmpeg -i <your-input-file> <your-output-file>
 # ```
 # 
 # Hardware encoding (Fast but difficult to control quality)
-# ```bash
+# ```
 # ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i {input_file} -c:v h264_nvenc {output_file}
 # ```
-
-# 
 
 # In[24]:
 
@@ -447,13 +446,17 @@ for transcoded_video in tqdm(transcoded_videos):
         'transcoded_file': transcoded_video,
         'original_frames': int(original_cap.get(cv2.CAP_PROP_FRAME_COUNT)),
         'transcoded_frames': int(transcoded_cap.get(cv2.CAP_PROP_FRAME_COUNT)),
-        'original_filesize_mb': round(original_video.stat().st_size / 1e6, 1), 
-        'transcoded_filesize_mb': round(transcoded_video.stat().st_size / 1e6, 1), 
+        'original_filesize': original_video.stat().st_size, 
+        'transcoded_filesize': transcoded_video.stat().st_size, 
     }
     metadata.append(_metadata)
     
 transcoded_metadata_df = pd.DataFrame(metadata)
-transcoded_metadata_df
+
+# ignore the video currently being transcoded (will show as having 0 frames)
+transcoded_metadata_df = transcoded_metadata_df.loc[transcoded_metadata_df.transcoded_frames > 0]
+
+transcoded_metadata_df.head(3)
 
 
 # In[27]:
@@ -462,18 +465,12 @@ transcoded_metadata_df
 transcoded_metadata_df.describe()
 
 
-# In[28]:
-
-
-transcoded_metadata_df.original_frames - transcoded_metadata_df.transcoded_frames
-
-
 # #### Quality checks
 
 # ##### Comparing individual frames
 # This is useful to make sure that trying to shrink the videos didn't result in visible differences in quality
 
-# In[29]:
+# In[28]:
 
 
 import numpy as np
@@ -506,8 +503,34 @@ for idx, row in transcoded_metadata_df.sample(5).iterrows():
     plt.show()
 
 
+# There's no obvious difference between videos in terms of quality
+
 # #### Stacking videos
-# 
+# We can also stack videos to watch for differences side by side
 # ```
 # ffmpeg -i original.mp4 -i transcoded.mp4 -filter_complex vstack=inputs=2 stacked-view.mp4
 # ```
+
+# ### What have we accomplished?
+# This time, we're transcoding in order to reduce filesize, with no change in resolution. Let's see how this is working out...
+
+# In[29]:
+
+
+print(
+    (
+        "So far we have transcoded {transcoded_count}/{total_count} videos, "
+        "compressing them from {original_size:.1f}MB -> {transcoded_size:.1f}MB. "
+        "This is {percentage:.1f}% of the original size, "
+        "so we estimate it will shrink the total dataset of {total_original_size:.1f}GB -> {total_transcoded_size:.1f}GB."
+    ).format(
+        total_count=metadata_df.shape[0],
+        transcoded_count=transcoded_metadata_df.shape[0],
+        original_size=transcoded_metadata_df.original_filesize.sum()/1e6,
+        transcoded_size=transcoded_metadata_df.transcoded_filesize.sum()/1e6,
+        percentage=transcoded_metadata_df.transcoded_filesize.sum()/transcoded_metadata_df.original_filesize.sum()*100,
+        total_original_size=metadata_df['size'].sum()/1e9,
+        total_transcoded_size=metadata_df['size'].sum()/transcoded_metadata_df.original_filesize.sum()/1e9*transcoded_metadata_df.transcoded_filesize.sum(),
+    )
+)
+
