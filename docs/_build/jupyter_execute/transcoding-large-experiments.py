@@ -8,9 +8,7 @@
 # ### What is transcoding and why do we do it?
 # Transcoding is the process of converting video from one format to another. 
 # 
-# In behavior, this is useful because videos directly from cameras are often overly large. By transcoding we can reduce the size of videos by half or more. Additionally, we can also resize videos (e.g. from 4K resolution to 720p), remove sound, and perform other useful functions. 
-# 
-# In some cases, I have shrunk experiments of over 100GB to <2GB with no difference to scoring. This makes using automated tools, such as deeplabcut, a lot faster. Furthermore it's a lot easier to transfer the files around to students or publish them online. 
+# In behavior, this is useful because we may want to compress videos to use as little disk space as possible or to lower their resolution to speed up later deep learning models.
 # 
 # ### What's covered here
 # Here we explore a large experiment with an inconsistent structure and lots of irrelevant data
@@ -475,7 +473,7 @@ transcoded_metadata_df.original_frames - transcoded_metadata_df.transcoded_frame
 # ##### Comparing individual frames
 # This is useful to make sure that trying to shrink the videos didn't result in visible differences in quality
 
-# In[31]:
+# In[29]:
 
 
 import numpy as np
