@@ -15,7 +15,7 @@
 # ### What's covered here
 # Here we explore a large experiment with an inconsistent structure and lots of irrelevant data
 # 
-# We're going to focus on a few main tasks
+# We're going to focus on a few main tasks (and the validation of them)
 # 1. Exploring the file systems: Finding all of the relevant videos
 # 2. Video details: Getting high level details from them to later verify everything was copied correctly (such as time). We also want to see if the videos themselves are very different and need lots of preprocessing.
 # 3. Transcoding the videos into a new folder using `ffmpeg`
@@ -25,11 +25,10 @@
 # ```
 # 
 # ### What's not covered here
-# This notebook is aimed at researchers who already have some knowledge but may want to expand/improve their methods using the tips here
-# 
-# - Python knowledge and some basics including some basic bash is assumed
-# - knowledge of ffmpeg is helpful
-# - With some basics, missing knowledge is mostly searchable. 
+# This notebook is aimed at researchers, in order to understand what's going on it's helpful to be somewhat familiar with 
+# - python
+# - bash 
+# - ffmpeg
 # 
 # For questions or suggestions, reach out to me at andretelfer@cmail.carleton.ca
 
@@ -37,7 +36,7 @@
 
 # Lets first find which drives are mounted
 
-# In[2]:
+# In[1]:
 
 
 ls /media/andre
@@ -45,7 +44,7 @@ ls /media/andre
 
 # I know that the first 3 drives contain experimental data, the last `maternal` drive is where I plan to store the transcoded videos
 
-# In[3]:
+# In[2]:
 
 
 from pathlib import Path 
@@ -68,7 +67,7 @@ OUTPUT_DRIVE = MOUNT_POINT / 'maternal'
 
 # Lets see how big our original dataset is
 
-# In[4]:
+# In[3]:
 
 
 get_ipython().run_cell_magic('time', '', '\ntotal_size = 0\nfor drive in DRIVES:\n    # glob is a useful tool for searching folders, here we tell it to find every file\n    files = (MOUNT_POINT / drive).glob(\'**/*\')\n    \n    # Only keep the files (discard directories)\n    files = list(filter(lambda x: x.is_file(), files)) \n    \n    # Get the size of each file\n    sizes = list(map(lambda x: x.stat().st_size, files)) \n    size = sum(sizes)\n    total_size += size\n    \n    # print the size in gigabytes\n    print(f"Drive {drive} is {size / 1e9:.2f}GB")\n    \n# print the total size\nprint(f"Total: {total_size / 1e9:.2f}GB")')
@@ -80,7 +79,7 @@ get_ipython().run_cell_magic('time', '', '\ntotal_size = 0\nfor drive in DRIVES:
 # 
 # Since videos can have many file extensions, lets print out all of the file extensions so we can identify the video ones.
 
-# In[5]:
+# In[4]:
 
 
 total_size = 0
@@ -110,7 +109,7 @@ print("Extensions: ", list(extensions))
 # 
 # ... but first lets check how many videos
 
-# In[6]:
+# In[5]:
 
 
 for drive in DRIVES:
@@ -124,7 +123,7 @@ for drive in DRIVES:
 
 # Again, eek. But I can't think of a way around seeing them all so lets print them out anyways.
 
-# In[7]:
+# In[6]:
 
 
 for drive in DRIVES:
@@ -142,7 +141,7 @@ for drive in DRIVES:
 # 
 # For now let's say the rest of the videos are useful, we can sort them out later by viewing them. There are too many to look through each one right now.
 
-# In[8]:
+# In[7]:
 
 
 def is_visible(filepath):
@@ -178,13 +177,13 @@ for drive in DRIVES:
 # ### Visualizing structure of folders
 # Sometimes the folders are very disorganized and its hard to get a big picture of what data we have by looking into each folder one at a time
 
-# In[9]:
+# In[8]:
 
 
 pip install -q treelib
 
 
-# In[10]:
+# In[9]:
 
 
 import treelib
@@ -222,7 +221,7 @@ tree.show()
 # 
 # Knowing this metadata is also important because it can help us validate the transcoded videos later.
 
-# In[11]:
+# In[10]:
 
 
 import pandas as pd
@@ -248,7 +247,7 @@ metadata_df
 
 # ### Total duration
 
-# In[12]:
+# In[11]:
 
 
 (metadata_df.frames / metadata_df.fps).sum()
@@ -256,7 +255,7 @@ metadata_df
 
 # ... That doesn't look right. What's going on?
 
-# In[13]:
+# In[12]:
 
 
 metadata_df.describe()
@@ -266,7 +265,7 @@ metadata_df.describe()
 # 
 # Let's see what videos are causing the problem
 
-# In[14]:
+# In[13]:
 
 
 metadata_df.loc[metadata_df.frames < 0]
@@ -274,7 +273,7 @@ metadata_df.loc[metadata_df.frames < 0]
 
 # Bad videos. Fortunately there's only a few so we can ignore them and deal with them manually later. Hopefully transcoding them will correct it.
 
-# In[15]:
+# In[14]:
 
 
 outlier_rows = metadata_df.frames < 0
@@ -284,7 +283,7 @@ metadata_df.loc[outlier_rows]
 
 # Great! we can get the total duration
 
-# In[16]:
+# In[15]:
 
 
 (metadata_df.frames / metadata_df.fps).sum()
@@ -292,7 +291,7 @@ metadata_df.loc[outlier_rows]
 
 # In human language...
 
-# In[17]:
+# In[16]:
 
 
 total_seconds = (metadata_df.frames / metadata_df.fps).sum()
@@ -304,7 +303,7 @@ print(f"Total days of videos: {total_days:.1f}")
 
 # ### Any other differences in size, etc?
 
-# In[18]:
+# In[17]:
 
 
 metadata_df.describe()
@@ -312,7 +311,7 @@ metadata_df.describe()
 
 # All of the videos have exactly the same height, and pretty much the same fps. There are videos with different widths however. Lets see all of the widths.
 
-# In[19]:
+# In[18]:
 
 
 metadata_df.width.unique()
@@ -320,25 +319,25 @@ metadata_df.width.unique()
 
 # Only two video widths, 704px and 720px. Lets see if these are from the two different filetypes `mp4` and `MPG`
 
-# In[20]:
+# In[19]:
 
 
 metadata_df.loc[metadata_df.width==704].describe()
 
 
-# In[21]:
+# In[20]:
 
 
 metadata_df.loc[metadata_df.width==704].sample(3)
 
 
-# In[22]:
+# In[21]:
 
 
 metadata_df.loc[metadata_df.width==720].describe()
 
 
-# In[23]:
+# In[22]:
 
 
 metadata_df.loc[metadata_df.width==720].sample(3)
@@ -352,7 +351,7 @@ metadata_df.loc[metadata_df.width==720].sample(3)
 
 # ## 3. Transcoding the videos
 
-# In[24]:
+# In[23]:
 
 
 print(f"We're not going to reorganize our {len(all_videos)} videos here.")
@@ -362,18 +361,27 @@ print(f"We're not going to reorganize our {len(all_videos)} videos here.")
 
 # ### Creating a bash file for long runs
 
-# The following script generates a bash file that can be run to transcode all of the files
+# There are many ways to transcode the files in python, however when running long scripts I often use bash. The following script generates a bash file that can be run to transcode all of the files.
 # 
 # The tool we use to actually do the transcoding is called ffmpeg. It's very versatile, and has way too many options to learn all of them, so you can search up what you need when you need them.
+# 
+# We can do things like resizing the video or changing quality, in the below command I decrease the video quality slightly using `-crf 24`. This should shrinkg their size a lot.
+# 
+# Example ffmpeg commands 
 # 
 # ffmpeg commands don't have to be complicated, a simple one would be 
 # ```bash
 # ffmpeg -i <your-input-file> <your-output-file>
 # ```
 # 
-# We can do things like resizing the video or changing quality, in the below command I decrease the video quality slightly using `-crf 24`. This should shrinkg their size a lot.
+# Hardware encoding (Fast but difficult to control quality)
+# ```bash
+# ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i {input_file} -c:v h264_nvenc {output_file}
+# ```
 
-# In[25]:
+# 
+
+# In[24]:
 
 
 import re
@@ -390,8 +398,8 @@ with open('transcode.sh', 'w') as fp:
         
         cmd = (
             "mkdir -p {output_dir} && " # make a new directory if necessary
-            "ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i {input_file} " # the input file and flags
-            "-c:v h264_nvenc -crf 24 -r 30 -an {output_file}\n" # the output file and flags
+            "ffmpeg -y -i {input_file} " # the input file and flags
+            "-crf 18 -r 30 -an {output_file}\n" # the output file and flags
         ).format(
             output_dir=re.escape(str(output_filepath.parent)), 
             input_file=re.escape(str(video)), 
@@ -405,7 +413,7 @@ with open('transcode.sh', 'w') as fp:
 
 # This is what the bash file looks like (but a lot more lines)
 
-# In[26]:
+# In[25]:
 
 
 get_ipython().system(' head -n 3 transcode.sh')
@@ -420,7 +428,7 @@ get_ipython().system(' head -n 3 transcode.sh')
 # - One video to not match/be readable as the bash script is still running and transcoding away as I write this.
 # - Other videos will be a few frames off, often some frames are dropped during transcoding
 
-# In[27]:
+# In[26]:
 
 
 transcoded_videos = (
@@ -450,13 +458,13 @@ transcoded_metadata_df = pd.DataFrame(metadata)
 transcoded_metadata_df
 
 
-# In[28]:
+# In[27]:
 
 
 transcoded_metadata_df.describe()
 
 
-# In[29]:
+# In[28]:
 
 
 transcoded_metadata_df.original_frames - transcoded_metadata_df.transcoded_frames
@@ -467,7 +475,7 @@ transcoded_metadata_df.original_frames - transcoded_metadata_df.transcoded_frame
 # ##### Comparing individual frames
 # This is useful to make sure that trying to shrink the videos didn't result in visible differences in quality
 
-# In[32]:
+# In[31]:
 
 
 import numpy as np
@@ -483,7 +491,7 @@ for idx, row in transcoded_metadata_df.sample(5).iterrows():
     transcoded_cap = cv2.VideoCapture(str(row.transcoded_file))
     transcoded_cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
     
-    plt.figure(figsize=(16, 8))
+    plt.figure(figsize=(20, 8))
     gs = plt.GridSpec(1, 2)
     plt.subplot(gs[0])
     plt.title('Original')
