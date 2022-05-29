@@ -37,7 +37,7 @@
 
 # Lets first find which drives are mounted
 
-# In[1]:
+# In[2]:
 
 
 ls /media/andre
@@ -45,7 +45,7 @@ ls /media/andre
 
 # I know that the first 3 drives contain experimental data, the last `maternal` drive is where I plan to store the transcoded videos
 
-# In[2]:
+# In[3]:
 
 
 from pathlib import Path 
@@ -68,7 +68,7 @@ OUTPUT_DRIVE = MOUNT_POINT / 'maternal'
 
 # Lets see how big our original dataset is
 
-# In[3]:
+# In[4]:
 
 
 get_ipython().run_cell_magic('time', '', '\ntotal_size = 0\nfor drive in DRIVES:\n    # glob is a useful tool for searching folders, here we tell it to find every file\n    files = (MOUNT_POINT / drive).glob(\'**/*\')\n    \n    # Only keep the files (discard directories)\n    files = list(filter(lambda x: x.is_file(), files)) \n    \n    # Get the size of each file\n    sizes = list(map(lambda x: x.stat().st_size, files)) \n    size = sum(sizes)\n    total_size += size\n    \n    # print the size in gigabytes\n    print(f"Drive {drive} is {size / 1e9:.2f}GB")\n    \n# print the total size\nprint(f"Total: {total_size / 1e9:.2f}GB")')
@@ -80,7 +80,7 @@ get_ipython().run_cell_magic('time', '', '\ntotal_size = 0\nfor drive in DRIVES:
 # 
 # Since videos can have many file extensions, lets print out all of the file extensions so we can identify the video ones.
 
-# In[4]:
+# In[5]:
 
 
 total_size = 0
@@ -110,7 +110,7 @@ print("Extensions: ", list(extensions))
 # 
 # ... but first lets check how many videos
 
-# In[5]:
+# In[6]:
 
 
 for drive in DRIVES:
@@ -124,7 +124,7 @@ for drive in DRIVES:
 
 # Again, eek. But I can't think of a way around seeing them all so lets print them out anyways.
 
-# In[6]:
+# In[7]:
 
 
 for drive in DRIVES:
@@ -142,7 +142,7 @@ for drive in DRIVES:
 # 
 # For now let's say the rest of the videos are useful, we can sort them out later by viewing them. There are too many to look through each one right now.
 
-# In[7]:
+# In[8]:
 
 
 def is_visible(filepath):
@@ -178,13 +178,13 @@ for drive in DRIVES:
 # ### Visualizing structure of folders
 # Sometimes the folders are very disorganized and its hard to get a big picture of what data we have by looking into each folder one at a time
 
-# In[8]:
+# In[9]:
 
 
 pip install -q treelib
 
 
-# In[9]:
+# In[10]:
 
 
 import treelib
@@ -222,7 +222,7 @@ tree.show()
 # 
 # Knowing this metadata is also important because it can help us validate the transcoded videos later.
 
-# In[10]:
+# In[11]:
 
 
 import pandas as pd
@@ -248,7 +248,7 @@ metadata_df
 
 # ### Total duration
 
-# In[11]:
+# In[12]:
 
 
 (metadata_df.frames / metadata_df.fps).sum()
@@ -256,7 +256,7 @@ metadata_df
 
 # ... That doesn't look right. What's going on?
 
-# In[12]:
+# In[13]:
 
 
 metadata_df.describe()
@@ -266,7 +266,7 @@ metadata_df.describe()
 # 
 # Let's see what videos are causing the problem
 
-# In[13]:
+# In[14]:
 
 
 metadata_df.loc[metadata_df.frames < 0]
@@ -274,7 +274,7 @@ metadata_df.loc[metadata_df.frames < 0]
 
 # Bad videos. Fortunately there's only a few so we can ignore them and deal with them manually later. Hopefully transcoding them will correct it.
 
-# In[14]:
+# In[15]:
 
 
 outlier_rows = metadata_df.frames < 0
@@ -284,7 +284,7 @@ metadata_df.loc[outlier_rows]
 
 # Great! we can get the total duration
 
-# In[15]:
+# In[16]:
 
 
 (metadata_df.frames / metadata_df.fps).sum()
@@ -292,7 +292,7 @@ metadata_df.loc[outlier_rows]
 
 # In human language...
 
-# In[16]:
+# In[17]:
 
 
 total_seconds = (metadata_df.frames / metadata_df.fps).sum()
@@ -304,7 +304,7 @@ print(f"Total days of videos: {total_days:.1f}")
 
 # ### Any other differences in size, etc?
 
-# In[17]:
+# In[18]:
 
 
 metadata_df.describe()
@@ -312,7 +312,7 @@ metadata_df.describe()
 
 # All of the videos have exactly the same height, and pretty much the same fps. There are videos with different widths however. Lets see all of the widths.
 
-# In[18]:
+# In[19]:
 
 
 metadata_df.width.unique()
@@ -320,25 +320,25 @@ metadata_df.width.unique()
 
 # Only two video widths, 704px and 720px. Lets see if these are from the two different filetypes `mp4` and `MPG`
 
-# In[19]:
+# In[20]:
 
 
 metadata_df.loc[metadata_df.width==704].describe()
 
 
-# In[20]:
+# In[21]:
 
 
 metadata_df.loc[metadata_df.width==704].sample(3)
 
 
-# In[21]:
+# In[22]:
 
 
 metadata_df.loc[metadata_df.width==720].describe()
 
 
-# In[22]:
+# In[23]:
 
 
 metadata_df.loc[metadata_df.width==720].sample(3)
@@ -352,7 +352,7 @@ metadata_df.loc[metadata_df.width==720].sample(3)
 
 # ## 3. Transcoding the videos
 
-# In[23]:
+# In[24]:
 
 
 print(f"We're not going to reorganize our {len(all_videos)} videos here.")
@@ -373,7 +373,7 @@ print(f"We're not going to reorganize our {len(all_videos)} videos here.")
 # 
 # We can do things like resizing the video or changing quality, in the below command I decrease the video quality slightly using `-crf 24`. This should shrinkg their size a lot.
 
-# In[35]:
+# In[25]:
 
 
 import re
@@ -405,7 +405,7 @@ with open('transcode.sh', 'w') as fp:
 
 # This is what the bash file looks like (but a lot more lines)
 
-# In[36]:
+# In[26]:
 
 
 get_ipython().system(' head -n 3 transcode.sh')
@@ -420,7 +420,7 @@ get_ipython().system(' head -n 3 transcode.sh')
 # - One video to not match/be readable as the bash script is still running and transcoding away as I write this.
 # - Other videos will be a few frames off, often some frames are dropped during transcoding
 
-# In[31]:
+# In[27]:
 
 
 transcoded_videos = (
@@ -450,13 +450,13 @@ transcoded_metadata_df = pd.DataFrame(metadata)
 transcoded_metadata_df
 
 
-# In[ ]:
+# In[28]:
 
 
 transcoded_metadata_df.describe()
 
 
-# In[33]:
+# In[29]:
 
 
 transcoded_metadata_df.original_frames - transcoded_metadata_df.transcoded_frames
@@ -465,21 +465,19 @@ transcoded_metadata_df.original_frames - transcoded_metadata_df.transcoded_frame
 # #### Quality checks
 
 # ##### Comparing individual frames
-# Unfortunately these don't match up exactly because a number of frames are dropped during transcoding
-# 
-# There are ways around this, but the underlying problem was with the original videos in this case so I just let ffmpeg correct them as it saw necessary. In total only a few seconds are lost from around 2h of video.
+# This is useful to make sure that trying to shrink the videos didn't result in visible differences in quality
 
-# In[28]:
+# In[32]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-for idx, row in transcoded_metadata_df.sample(3).iterrows():
-    frames = min(row.transcoded_frames, row.frames)
+for idx, row in transcoded_metadata_df.sample(5).iterrows():
+    frames = min(row.transcoded_frames, row.original_frames)
     frame_idx = np.random.randint(frames)
     
-    original_cap = cv2.VideoCapture(str(row.file))
+    original_cap = cv2.VideoCapture(str(row.original_file))
     original_cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
     
     transcoded_cap = cv2.VideoCapture(str(row.transcoded_file))
@@ -488,11 +486,13 @@ for idx, row in transcoded_metadata_df.sample(3).iterrows():
     plt.figure(figsize=(16, 8))
     gs = plt.GridSpec(1, 2)
     plt.subplot(gs[0])
+    plt.title('Original')
     ret, frame = original_cap.read()
     frame = np.flip(frame, axis=2)
     plt.imshow(frame)
     
     plt.subplot(gs[1])
+    plt.title('Transcoded')
     ret, frame = transcoded_cap.read()
     frame = np.flip(frame, axis=2)
     plt.imshow(frame)
