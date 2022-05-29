@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Transcoding a Large Experiment
+# # Transcoding: A Practical Example with a Large Experiment 
 # Contact: andretelfer@cmail.carleton.ca
 # 
 # ## Introduction
@@ -373,7 +373,7 @@ print(f"We're not going to reorganize our {len(all_videos)} videos here.")
 # 
 # We can do things like resizing the video or changing quality, in the below command I decrease the video quality slightly using `-crf 24`. This should shrinkg their size a lot.
 
-# In[24]:
+# In[35]:
 
 
 import re
@@ -391,7 +391,7 @@ with open('transcode.sh', 'w') as fp:
         cmd = (
             "mkdir -p {output_dir} && " # make a new directory if necessary
             "ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -extra_hw_frames 4 -i {input_file} " # the input file and flags
-            "-c:v h264_nvenc -crf 24 -an {output_file}\n" # the output file and flags
+            "-c:v h264_nvenc -crf 24 -r 30 -an {output_file}\n" # the output file and flags
         ).format(
             output_dir=re.escape(str(output_filepath.parent)), 
             input_file=re.escape(str(video)), 
@@ -405,7 +405,7 @@ with open('transcode.sh', 'w') as fp:
 
 # This is what the bash file looks like (but a lot more lines)
 
-# In[25]:
+# In[36]:
 
 
 get_ipython().system(' head -n 3 transcode.sh')
@@ -420,7 +420,7 @@ get_ipython().system(' head -n 3 transcode.sh')
 # - One video to not match/be readable as the bash script is still running and transcoding away as I write this.
 # - Other videos will be a few frames off, often some frames are dropped during transcoding
 
-# In[26]:
+# In[31]:
 
 
 transcoded_videos = (
@@ -437,17 +437,29 @@ for transcoded_video in tqdm(transcoded_videos):
     transcoded_cap = cv2.VideoCapture(str(transcoded_video))
     
     _metadata = {
-        'file': original_video,
+        'original_file': original_video,
         'transcoded_file': transcoded_video,
-        'frames': int(original_cap.get(cv2.CAP_PROP_FRAME_COUNT)),
+        'original_frames': int(original_cap.get(cv2.CAP_PROP_FRAME_COUNT)),
         'transcoded_frames': int(transcoded_cap.get(cv2.CAP_PROP_FRAME_COUNT)),
-        'filesize_mb': round(original_video.stat().st_size / 1e6, 1), 
+        'original_filesize_mb': round(original_video.stat().st_size / 1e6, 1), 
         'transcoded_filesize_mb': round(transcoded_video.stat().st_size / 1e6, 1), 
     }
     metadata.append(_metadata)
     
 transcoded_metadata_df = pd.DataFrame(metadata)
 transcoded_metadata_df
+
+
+# In[ ]:
+
+
+transcoded_metadata_df.describe()
+
+
+# In[33]:
+
+
+transcoded_metadata_df.original_frames - transcoded_metadata_df.transcoded_frames
 
 
 # #### Quality checks
