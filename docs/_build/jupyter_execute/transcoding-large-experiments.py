@@ -520,9 +520,9 @@ for idx, row in transcoded_metadata_df.sample(5).iterrows():
 print(
     (
         "So far we have transcoded {transcoded_count}/{total_count} videos, "
-        "compressing them from {original_size:.1f}MB -> {transcoded_size:.1f}MB. "
-        "This is {percentage:.1f}% of the original size, "
-        "so we estimate it will shrink the total dataset of {total_original_size:.1f}GB -> {total_transcoded_size:.1f}GB."
+        "compressing them from {original_size:.1f}MB -> {transcoded_size:.1f}MB.\n"
+        "This is {percentage:.1f}% of the original size, so we estimate it will "
+        "shrink the total dataset from\n{total_original_size:.1f}GB -> {total_transcoded_size:.1f}GB."
     ).format(
         total_count=metadata_df.shape[0],
         transcoded_count=transcoded_metadata_df.shape[0],
