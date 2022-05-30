@@ -1,0 +1,1731 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cleaning up Datasheets Example &#8212; Preprocessing Behavior Videos</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Transcoding: A Practical Example with a Large Experiment" href="transcoding-large-experiments.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Preprocessing Behavior Videos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Preprocessing behavior videos
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="transcoding-large-experiments.html">
+   Transcoding: A Practical Example with a Large Experiment
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cleaning up Datasheets Example
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/datasheet-cleanup.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/A-Telfer/video-preprocessing"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/A-Telfer/video-preprocessing/issues/new?title=Issue%20on%20page%20%2Fdatasheet-cleanup.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/A-Telfer/video-preprocessing/master?urlpath=tree/docs/datasheet-cleanup.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Cleaning up Datasheets Example
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-s-covered-here">
+     What’s covered here
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-the-data">
+     Loading the Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correcting-inconsistencies">
+     Correcting Inconsistencies
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#checking-column-names">
+       Checking Column Names
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#checking-column-values">
+       Checking Column Values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#renaming-columns">
+       Renaming Columns
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-dataframes">
+     Combining Dataframes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-trailing-leading-spaces-from-strings">
+     Removing trailing/leading spaces from strings
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-id-column-lower-case">
+     Make id column lower case
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-text-values">
+     Removing text values
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sorting-the-sheet">
+       Sorting the sheet
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#merging-the-treatment-groups">
+       Merging the treatment groups
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-the-datasheet">
+   Saving the datasheet
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#done-what-did-we-accomplish">
+     Done: What did we accomplish?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Cleaning up Datasheets Example</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Cleaning up Datasheets Example
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-s-covered-here">
+     What’s covered here
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-the-data">
+     Loading the Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correcting-inconsistencies">
+     Correcting Inconsistencies
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#checking-column-names">
+       Checking Column Names
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#checking-column-values">
+       Checking Column Values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#renaming-columns">
+       Renaming Columns
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-dataframes">
+     Combining Dataframes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-trailing-leading-spaces-from-strings">
+     Removing trailing/leading spaces from strings
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-id-column-lower-case">
+     Make id column lower case
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-text-values">
+     Removing text values
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sorting-the-sheet">
+       Sorting the sheet
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#merging-the-treatment-groups">
+       Merging the treatment groups
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-the-datasheet">
+   Saving the datasheet
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#done-what-did-we-accomplish">
+     Done: What did we accomplish?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="cleaning-up-datasheets-example">
+<h1>Cleaning up Datasheets Example<a class="headerlink" href="#cleaning-up-datasheets-example" title="Permalink to this headline">¶</a></h1>
+<p>Along with the videos, other forms of experimental data often need to be preprocessed</p>
+<div class="section" id="what-s-covered-here">
+<h2>What’s covered here<a class="headerlink" href="#what-s-covered-here" title="Permalink to this headline">¶</a></h2>
+<p>This notebook demonstrates working with table data for treatment group and manual scores from a small experiment.</p>
+<ul class="simple">
+<li><p>The data was split into multiple files</p></li>
+<li><p>The data is not consistently formatted</p></li>
+<li><p>There is some missing data that we were given in an email that we need to update manually</p></li>
+</ul>
+<p>For an experiment this size, it would be pretty easy to input things manually. However, using this method we can easily validate there are no errors (can be easy to miss such as an extra space) and it’s a useful demonstration for larger datasets.</p>
+</div>
+<div class="section" id="loading-the-data">
+<h2>Loading the Data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">EXPERIMENT_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/home/andretelfer/shared/curated/fran/raw/&quot;</span><span class="p">)</span>
+
+<span class="c1"># I found the sheet names by looking through the excel files themselves</span>
+<span class="n">cohort1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">EXPERIMENT_DIR</span> <span class="o">/</span> <span class="s1">&#39;BehaviourData_Cohorts1&amp;2.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Cohort 1&#39;</span><span class="p">)</span>
+<span class="n">cohort2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">EXPERIMENT_DIR</span> <span class="o">/</span> <span class="s1">&#39;BehaviourData_Cohorts1&amp;2.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Cohort 2&#39;</span><span class="p">)</span>
+<span class="n">cohort3a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">EXPERIMENT_DIR</span> <span class="o">/</span> <span class="s1">&#39;cohort 3.xlsx&#39;</span><span class="p">)</span>
+<span class="n">cohort3b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">EXPERIMENT_DIR</span> <span class="o">/</span> <span class="s1">&#39;Cohort 3 - Part 2.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="correcting-inconsistencies">
+<h2>Correcting Inconsistencies<a class="headerlink" href="#correcting-inconsistencies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="checking-column-names">
+<h3>Checking Column Names<a class="headerlink" href="#checking-column-names" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">cohort1</span><span class="p">,</span> <span class="n">cohort2</span><span class="p">,</span> <span class="n">cohort3a</span><span class="p">,</span> <span class="n">cohort3b</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Animal ID&#39;, &#39;Latency to approach&#39;, &#39;Time spent in corners&#39;, &#39;Time Spent Eating&#39;, &#39;Amount Eaten&#39;]
+[&#39;Animal ID&#39;, &#39;Latency to approach&#39;, &#39;Time spent in corners&#39;, &#39;Time Spent Eating&#39;, &#39;Amount Eaten&#39;]
+[&#39;Unnamed: 0&#39;, &#39;Latency&#39;, &#39;Corners&#39;, &#39;Eating &#39;, &#39;Cookie Dough Start&#39;, &#39;Cookie Dough End &#39;, &#39;Amount Eaten&#39;]
+[&#39;Animal ID&#39;, &#39;Latency to Approach&#39;, &#39;Time Spent in Corners&#39;, &#39;Time Spent Eating&#39;, &#39;Cookie Dough Start&#39;, &#39;Cookie Dough End&#39;, &#39;Cookie Dough Eaten&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are inconsistencies between column names, but they look like they’ll be pretty easy to correct for.</p>
+</div>
+<div class="section" id="checking-column-values">
+<h3>Checking Column Values<a class="headerlink" href="#checking-column-values" title="Permalink to this headline">¶</a></h3>
+<p>Before we standardize the column names, lets first make sure all of the values are similar.</p>
+<ul class="simple">
+<li><p>if one file uses a very different format, we may want to correct it before combining</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">cohort1</span><span class="p">,</span> <span class="n">cohort2</span><span class="p">,</span> <span class="n">cohort3a</span><span class="p">,</span> <span class="n">cohort3b</span><span class="p">]:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Animal ID</th>
+      <th>Latency to approach</th>
+      <th>Time spent in corners</th>
+      <th>Time Spent Eating</th>
+      <th>Amount Eaten</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>M1</td>
+      <td>6.18</td>
+      <td>245.17</td>
+      <td>16.15</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>M2</td>
+      <td>22.97</td>
+      <td>124.21</td>
+      <td>35.81</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>M3</td>
+      <td>10.39</td>
+      <td>130.09</td>
+      <td>11.01</td>
+      <td>0.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Animal ID</th>
+      <th>Latency to approach</th>
+      <th>Time spent in corners</th>
+      <th>Time Spent Eating</th>
+      <th>Amount Eaten</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>M16</td>
+      <td>316.57</td>
+      <td>487.75</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>M17</td>
+      <td>136.51</td>
+      <td>202.23</td>
+      <td>15.83</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>M18</td>
+      <td>49.67</td>
+      <td>180.624</td>
+      <td>8.22</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Latency</th>
+      <th>Corners</th>
+      <th>Eating</th>
+      <th>Cookie Dough Start</th>
+      <th>Cookie Dough End</th>
+      <th>Amount Eaten</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>F43</td>
+      <td>12.25</td>
+      <td>403.38</td>
+      <td>0.0</td>
+      <td>3.2</td>
+      <td>3.2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>F44</td>
+      <td>21.06</td>
+      <td>452.46</td>
+      <td>0.0</td>
+      <td>4.3</td>
+      <td>4.3</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>F47</td>
+      <td>165.98</td>
+      <td>450.93</td>
+      <td>0.0</td>
+      <td>4.4</td>
+      <td>4.4</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Animal ID</th>
+      <th>Latency to Approach</th>
+      <th>Time Spent in Corners</th>
+      <th>Time Spent Eating</th>
+      <th>Cookie Dough Start</th>
+      <th>Cookie Dough End</th>
+      <th>Cookie Dough Eaten</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>F42</td>
+      <td>13.88</td>
+      <td>395.05</td>
+      <td>0.00</td>
+      <td>2.2</td>
+      <td>2.2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>F50</td>
+      <td>38.52</td>
+      <td>273.29</td>
+      <td>13.99</td>
+      <td>3.8</td>
+      <td>3.7</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>F49</td>
+      <td>35.72</td>
+      <td>317.98</td>
+      <td>0.00</td>
+      <td>2.8</td>
+      <td>2.8</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>They appear to match well, a few notes</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Unnamed:</span> <span class="pre">0</span></code> in cohort3a sheet appears the same as Animal ID in the other dataframes</p></li>
+<li><p>The first 2 cohorts do not record the cookie dought start/end, just the amount eaten</p></li>
+</ul>
+</div>
+<div class="section" id="renaming-columns">
+<h3>Renaming Columns<a class="headerlink" href="#renaming-columns" title="Permalink to this headline">¶</a></h3>
+<p>Let’s now start to standardize the column names and combine them.</p>
+<ul class="simple">
+<li><p>I use a lower case format and replace spaces with underscores. This fits well with python naming conventions and make them easy to access through pandas dataframes.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;latency_to_approach&#39;</span><span class="p">,</span> <span class="s1">&#39;time_in_corners&#39;</span><span class="p">,</span> <span class="s1">&#39;time_eating&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_eaten&#39;</span><span class="p">]</span>
+
+<span class="n">cohort1</span> <span class="o">=</span> <span class="n">cohort1</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;Animal ID&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Latency to approach&#39;</span><span class="p">:</span> <span class="s1">&#39;latency_to_approach&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Time spent in corners&#39;</span><span class="p">:</span> <span class="s1">&#39;time_in_corners&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Time Spent Eating&#39;</span><span class="p">:</span> <span class="s1">&#39;time_eating&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Amount Eaten&#39;</span><span class="p">:</span> <span class="s1">&#39;amount_eaten&#39;</span>
+<span class="p">})[</span><span class="n">columns_to_keep</span><span class="p">]</span>
+
+<span class="n">cohort2</span> <span class="o">=</span> <span class="n">cohort2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;Animal ID&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Latency to approach&#39;</span><span class="p">:</span> <span class="s1">&#39;latency_to_approach&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Time spent in corners&#39;</span><span class="p">:</span> <span class="s1">&#39;time_in_corners&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Time Spent Eating&#39;</span><span class="p">:</span> <span class="s1">&#39;time_eating&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Amount Eaten&#39;</span><span class="p">:</span> <span class="s1">&#39;amount_eaten&#39;</span>
+<span class="p">})[</span><span class="n">columns_to_keep</span><span class="p">]</span>
+
+<span class="n">cohort3a</span> <span class="o">=</span> <span class="n">cohort3a</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Latency&#39;</span><span class="p">:</span> <span class="s1">&#39;latency_to_approach&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Corners&#39;</span><span class="p">:</span> <span class="s1">&#39;time_in_corners&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eating &#39;</span><span class="p">:</span> <span class="s1">&#39;time_eating&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Amount Eaten&#39;</span><span class="p">:</span> <span class="s1">&#39;amount_eaten&#39;</span>
+<span class="p">})[</span><span class="n">columns_to_keep</span><span class="p">]</span>
+
+<span class="n">cohort3b</span> <span class="o">=</span> <span class="n">cohort3b</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;Animal ID&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Latency to Approach&#39;</span><span class="p">:</span> <span class="s1">&#39;latency_to_approach&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Time Spent in Corners&#39;</span><span class="p">:</span> <span class="s1">&#39;time_in_corners&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Time Spent Eating&#39;</span><span class="p">:</span> <span class="s1">&#39;time_eating&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Cookie Dough Eaten&#39;</span><span class="p">:</span> <span class="s1">&#39;amount_eaten&#39;</span>
+<span class="p">})[</span><span class="n">columns_to_keep</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">cohort1</span><span class="p">,</span> <span class="n">cohort2</span><span class="p">,</span> <span class="n">cohort3a</span><span class="p">,</span> <span class="n">cohort3b</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;id&#39;, &#39;latency_to_approach&#39;, &#39;time_in_corners&#39;, &#39;time_eating&#39;, &#39;amount_eaten&#39;]
+[&#39;id&#39;, &#39;latency_to_approach&#39;, &#39;time_in_corners&#39;, &#39;time_eating&#39;, &#39;amount_eaten&#39;]
+[&#39;id&#39;, &#39;latency_to_approach&#39;, &#39;time_in_corners&#39;, &#39;time_eating&#39;, &#39;amount_eaten&#39;]
+[&#39;id&#39;, &#39;latency_to_approach&#39;, &#39;time_in_corners&#39;, &#39;time_eating&#39;, &#39;amount_eaten&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great! Now that out columns match up well, we can combine them.</p>
+</div>
+</div>
+<div class="section" id="combining-dataframes">
+<h2>Combining Dataframes<a class="headerlink" href="#combining-dataframes" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">cohort1</span><span class="p">,</span> <span class="n">cohort2</span><span class="p">,</span> <span class="n">cohort3a</span><span class="p">,</span> <span class="n">cohort3b</span><span class="p">])</span>
+<span class="n">combined</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>latency_to_approach</th>
+      <th>time_in_corners</th>
+      <th>time_eating</th>
+      <th>amount_eaten</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>M1</td>
+      <td>6.18</td>
+      <td>245.17</td>
+      <td>16.15</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>M2</td>
+      <td>22.97</td>
+      <td>124.21</td>
+      <td>35.81</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>M3</td>
+      <td>10.39</td>
+      <td>130.09</td>
+      <td>11.01</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>M4</td>
+      <td>68.8</td>
+      <td>30.36</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>M5</td>
+      <td>6.39</td>
+      <td>192.02</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>F41</td>
+      <td>8.78</td>
+      <td>262.11</td>
+      <td>6.51</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>F42</td>
+      <td>13.88</td>
+      <td>395.05</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>F50</td>
+      <td>38.52</td>
+      <td>273.29</td>
+      <td>13.99</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>F49</td>
+      <td>35.72</td>
+      <td>317.98</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>F45</td>
+      <td>12.69</td>
+      <td>441.74</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>80 rows × 5 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="removing-trailing-leading-spaces-from-strings">
+<h2>Removing trailing/leading spaces from strings<a class="headerlink" href="#removing-trailing-leading-spaces-from-strings" title="Permalink to this headline">¶</a></h2>
+<p>Trailing/leading spaces are a common type of inconsistency in manually entered excel sheets</p>
+<p>Let’s remove any now</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">strip_strings</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="n">combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">strip_strings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="make-id-column-lower-case">
+<h2>Make id column lower case<a class="headerlink" href="#make-id-column-lower-case" title="Permalink to this headline">¶</a></h2>
+<p>The video files that are named with the animal id use lower case letters, let’s do the same here so it’s easier to match them</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">combined</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>latency_to_approach</th>
+      <th>time_in_corners</th>
+      <th>time_eating</th>
+      <th>amount_eaten</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>m1</td>
+      <td>6.18</td>
+      <td>245.17</td>
+      <td>16.15</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>m2</td>
+      <td>22.97</td>
+      <td>124.21</td>
+      <td>35.81</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m3</td>
+      <td>10.39</td>
+      <td>130.09</td>
+      <td>11.01</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>m4</td>
+      <td>68.8</td>
+      <td>30.36</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m5</td>
+      <td>6.39</td>
+      <td>192.02</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>f41</td>
+      <td>8.78</td>
+      <td>262.11</td>
+      <td>6.51</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>f42</td>
+      <td>13.88</td>
+      <td>395.05</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>f50</td>
+      <td>38.52</td>
+      <td>273.29</td>
+      <td>13.99</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>f49</td>
+      <td>35.72</td>
+      <td>317.98</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>f45</td>
+      <td>12.69</td>
+      <td>441.74</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>80 rows × 5 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="removing-text-values">
+<h2>Removing text values<a class="headerlink" href="#removing-text-values" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;latency_to_approach&#39;</span><span class="p">,</span> <span class="s1">&#39;time_in_corners&#39;</span><span class="p">,</span> <span class="s1">&#39;time_eating&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_eaten&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Column: </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">non_numeric_values</span> <span class="o">=</span> <span class="n">combined</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">combined</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">non_numeric_values</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span> <span class="c1"># Add an empty row after printing out the column values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Column: latency_to_approach
+[&#39;Does not approach&#39; &#39;Does not approach&#39; &#39;Does not approach&#39;
+ &#39;Does not approach&#39;]
+
+Column: time_in_corners
+[&#39;540 (does not leave corner)&#39; &#39;540 (does not leave corner)&#39;]
+
+Column: time_eating
+[]
+
+Column: amount_eaten
+[]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since there is some consistency to the text values, it seems useful to keep them. Let’s move them to a new boolean column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Add new boolean columns for string information</span>
+<span class="n">combined</span><span class="p">[</span><span class="s2">&quot;does_not_leave_corner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">combined</span><span class="o">.</span><span class="n">time_in_corners</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;does not leave corner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="n">combined</span><span class="p">[</span><span class="s2">&quot;does_not_approach&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">combined</span><span class="o">.</span><span class="n">time_in_corners</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Does not approach&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># Remove the text values and just keep the numbers</span>
+<span class="c1"># - We note they use 540 a few times when the mouse doesn&#39;t approach, let&#39;s continue to use that</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Does not approach&quot;</span><span class="p">,</span> <span class="mi">540</span><span class="p">)</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Does not approach &quot;</span><span class="p">,</span> <span class="mi">540</span><span class="p">)</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;540 (does not leave corner)&quot;</span><span class="p">,</span> <span class="mi">540</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>*Side note: Sometimes <code class="docutils literal notranslate"><span class="pre">540</span></code> appears in the daya without the full text <code class="docutils literal notranslate"><span class="pre">'540</span> <span class="pre">(does</span> <span class="pre">not</span> <span class="pre">leave</span> <span class="pre">corner)'</span></code>. This could have been data entry inconsistency, but we’ll leave it as it’s not clear.</p>
+<p>Let’s confirm there are no strings left in the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;latency_to_approach&#39;</span><span class="p">,</span> <span class="s1">&#39;time_in_corners&#39;</span><span class="p">,</span> <span class="s1">&#39;time_eating&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_eaten&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Column: </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">non_numeric_values</span> <span class="o">=</span> <span class="n">combined</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">combined</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">non_numeric_values</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span> <span class="c1"># Add an empty row after printing out the column values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Column: latency_to_approach
+[]
+
+Column: time_in_corners
+[]
+
+Column: time_eating
+[]
+
+Column: amount_eaten
+[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sorting-the-sheet">
+<h3>Sorting the sheet<a class="headerlink" href="#sorting-the-sheet" title="Permalink to this headline">¶</a></h3>
+<p>Currently our sheet is not sorted</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>latency_to_approach</th>
+      <th>time_in_corners</th>
+      <th>time_eating</th>
+      <th>amount_eaten</th>
+      <th>does_not_leave_corner</th>
+      <th>does_not_approach</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>f50</td>
+      <td>38.52</td>
+      <td>273.29</td>
+      <td>13.99</td>
+      <td>0.1</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>f49</td>
+      <td>35.72</td>
+      <td>317.98</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>f45</td>
+      <td>12.69</td>
+      <td>441.74</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Nope. We can sort it to make it a bit easier for humans to read</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">id_to_value</span><span class="p">(</span><span class="n">animal_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sort the animals by sex then number&quot;&quot;&quot;</span>
+    <span class="n">sex</span> <span class="o">=</span> <span class="n">animal_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">animal_id</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">sort_value</span> <span class="o">=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">sex</span> <span class="o">==</span> <span class="s1">&#39;m&#39;</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">sort_value</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="k">return</span> <span class="n">sort_value</span>
+
+<span class="n">combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">combined</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">id_to_value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>latency_to_approach</th>
+      <th>time_in_corners</th>
+      <th>time_eating</th>
+      <th>amount_eaten</th>
+      <th>does_not_leave_corner</th>
+      <th>does_not_approach</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>f1</td>
+      <td>15.00</td>
+      <td>136.99</td>
+      <td>9.84</td>
+      <td>0.3</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>f2</td>
+      <td>36.43</td>
+      <td>122.55</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>f3</td>
+      <td>17.38</td>
+      <td>32.54</td>
+      <td>1.12</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>f4</td>
+      <td>27.95</td>
+      <td>129.35</td>
+      <td>2.58</td>
+      <td>0.1</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>f5</td>
+      <td>9.88</td>
+      <td>201.56</td>
+      <td>2.73</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>m28</td>
+      <td>123.63</td>
+      <td>509.66</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>m29</td>
+      <td>16.22</td>
+      <td>343.84</td>
+      <td>17.49</td>
+      <td>0.1</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>m30</td>
+      <td>18.42</td>
+      <td>319.65</td>
+      <td>7.28</td>
+      <td>0.1</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>m31</td>
+      <td>540.00</td>
+      <td>443.65</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>m32</td>
+      <td>17.14</td>
+      <td>327.94</td>
+      <td>3.09</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>80 rows × 7 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="merging-the-treatment-groups">
+<h3>Merging the treatment groups<a class="headerlink" href="#merging-the-treatment-groups" title="Permalink to this headline">¶</a></h3>
+<p>We have a separate csv sheet with the treatment data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treatment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">EXPERIMENT_DIR</span> <span class="o">/</span> <span class="s2">&quot;treatment-groups.csv&quot;</span><span class="p">)</span>
+<span class="n">treatment_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>injected_with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>m1</td>
+      <td>saline/saline</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>m2</td>
+      <td>saline/ghrelin</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m3</td>
+      <td>mt2/ghrelin</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>m4</td>
+      <td>mt2/saline</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m5</td>
+      <td>saline/saline</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>f44</td>
+      <td>mt2/saline</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>f45</td>
+      <td>saline/saline</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>f47</td>
+      <td>mt2/ghrelin</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>f49</td>
+      <td>mt2/ghrelin</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>f50</td>
+      <td>saline/ghrelin</td>
+    </tr>
+  </tbody>
+</table>
+<p>80 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Let’s check there aren’t any typos with the values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treatment_df</span><span class="o">.</span><span class="n">injected_with</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;saline/saline&#39;, &#39;saline/ghrelin&#39;, &#39;mt2/ghrelin&#39;, &#39;mt2/saline&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks good! Now let’s merge it with the rest of our data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">treatment_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="n">combined</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>latency_to_approach</th>
+      <th>time_in_corners</th>
+      <th>time_eating</th>
+      <th>amount_eaten</th>
+      <th>does_not_leave_corner</th>
+      <th>does_not_approach</th>
+      <th>injected_with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>f1</td>
+      <td>15.00</td>
+      <td>136.99</td>
+      <td>9.84</td>
+      <td>0.3</td>
+      <td>False</td>
+      <td>False</td>
+      <td>saline/ghrelin</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>f2</td>
+      <td>36.43</td>
+      <td>122.55</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+      <td>saline/saline</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>f3</td>
+      <td>17.38</td>
+      <td>32.54</td>
+      <td>1.12</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+      <td>mt2/saline</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>f4</td>
+      <td>27.95</td>
+      <td>129.35</td>
+      <td>2.58</td>
+      <td>0.1</td>
+      <td>False</td>
+      <td>False</td>
+      <td>mt2/ghrelin</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>f5</td>
+      <td>9.88</td>
+      <td>201.56</td>
+      <td>2.73</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+      <td>saline/saline</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>m28</td>
+      <td>123.63</td>
+      <td>509.66</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+      <td>mt2/ghrelin</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>m29</td>
+      <td>16.22</td>
+      <td>343.84</td>
+      <td>17.49</td>
+      <td>0.1</td>
+      <td>False</td>
+      <td>False</td>
+      <td>saline/saline</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>m30</td>
+      <td>18.42</td>
+      <td>319.65</td>
+      <td>7.28</td>
+      <td>0.1</td>
+      <td>False</td>
+      <td>False</td>
+      <td>saline/ghrelin</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>m31</td>
+      <td>540.00</td>
+      <td>443.65</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+      <td>mt2/saline</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>m32</td>
+      <td>17.14</td>
+      <td>327.94</td>
+      <td>3.09</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>False</td>
+      <td>mt2/ghrelin</td>
+    </tr>
+  </tbody>
+</table>
+<p>80 rows × 8 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="saving-the-datasheet">
+<h1>Saving the datasheet<a class="headerlink" href="#saving-the-datasheet" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">EXPERIMENT_DIR</span> <span class="o">/</span> <span class="s1">&#39;experiment-data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="done-what-did-we-accomplish">
+<h2>Done: What did we accomplish?<a class="headerlink" href="#done-what-did-we-accomplish" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>loaded data from several spreadsheets (4 for manual scores + 1 for treatment data)</p></li>
+<li><p>removed inconsistencies</p>
+<ul>
+<li><p>replaced values</p></li>
+<li><p>removed tailing/leading spaces</p></li>
+<li><p>moved text values to new columns</p></li>
+</ul>
+</li>
+<li><p>made quality of life improvements</p>
+<ul>
+<li><p>renamed columns</p></li>
+<li><p>sorted values</p></li>
+</ul>
+</li>
+<li><p>merged datasheets and saved to a new file</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="transcoding-large-experiments.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Transcoding: A Practical Example with a Large Experiment</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Andre Telfer<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
