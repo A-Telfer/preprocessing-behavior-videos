@@ -6,6 +6,6 @@ Examples of preprocessing behvioural videos:
 - organizing file structures 
 - combining data files from multiple sources into formats that are easier to work with
 
-
+## Contents
 ```{tableofcontents}
 ```
