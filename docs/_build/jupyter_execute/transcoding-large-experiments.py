@@ -11,22 +11,13 @@
 # In behavior, this is useful because we may want to compress videos to use as little disk space as possible or to lower their resolution to speed up later deep learning models.
 # 
 # ### What's covered here
-# Here we explore a large experiment with an inconsistent structure and lots of irrelevant data
+# Here we explore a large experiment (151 days of video as we discover later here) with an inconsistent structure 
 # 
 # We're going to focus on a few main tasks (and the validation of them)
-# 1. Exploring the file systems: Finding all of the relevant videos
-# 2. Video details: Getting high level details from them to later verify everything was copied correctly (such as time). We also want to see if the videos themselves are very different and need lots of preprocessing.
-# 3. Transcoding the videos into a new folder using `ffmpeg`
+# 1. Exploring the data in order to identify all of the relevant files
+# 2. Describing the data, e.g. high level details such as video duration and resolutions.
+# 3. Compressing the videos using transcoding 
 # 
-# ```{note}
-# In this case, we do not resize the videos because they are fairly low quality. However you can easily add option to the ffmpeg command in the transcoding step to this.
-# ```
-# 
-# ### What's not covered here
-# This notebook is aimed at researchers, in order to understand what's going on it's helpful to be somewhat familiar with 
-# - python
-# - bash 
-# - ffmpeg
 # 
 # For questions or suggestions, reach out to me at andretelfer@cmail.carleton.ca
 

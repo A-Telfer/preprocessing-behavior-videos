@@ -1,65 +1,40 @@
 Traceback (most recent call last):
-  File "/home/andre/miniconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "/home/andretelfer/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
-  File "/home/andre/miniconda3/lib/python3.9/site-packages/nbclient/client.py", line 1093, in execute
+  File "/home/andretelfer/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/home/andre/miniconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+  File "/home/andretelfer/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/home/andre/miniconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+  File "/home/andretelfer/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
     return loop.run_until_complete(coro)
-  File "/home/andre/miniconda3/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+  File "/home/andretelfer/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
     return future.result()
-  File "/home/andre/miniconda3/lib/python3.9/site-packages/nbclient/client.py", line 559, in async_execute
+  File "/home/andretelfer/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/home/andre/miniconda3/lib/python3.9/site-packages/nbclient/client.py", line 854, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "/home/andre/miniconda3/lib/python3.9/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+  File "/home/andretelfer/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/andretelfer/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import numpy as np
-import matplotlib.pyplot as plt
-
-for idx, row in transcoded_metadata_df.sample(5).iterrows():
-    frames = min(row.transcoded_frames, row.original_frames)
-    frame_idx = np.random.randint(frames)
-    
-    original_cap = cv2.VideoCapture(str(row.original_file))
-    original_cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
-    
-    transcoded_cap = cv2.VideoCapture(str(row.transcoded_file))
-    transcoded_cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
-    
-    plt.figure(figsize=(20, 8))
-    gs = plt.GridSpec(1, 2)
-    plt.subplot(gs[0])
-    plt.title('Original')
-    ret, frame = original_cap.read()
-    frame = np.flip(frame, axis=2)
-    plt.imshow(frame)
-    
-    plt.subplot(gs[1])
-    plt.title('Transcoded')
-    ret, frame = transcoded_cap.read()
-    frame = np.flip(frame, axis=2)
-    plt.imshow(frame)
-    
-    plt.show()
+(metadata_df.frames / metadata_df.fps).sum()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mValueError[0m                                Traceback (most recent call last)
-[0;32m<ipython-input-29-cb4f8c5fc143>[0m in [0;36m<module>[0;34m[0m
-[1;32m      4[0m [0;32mfor[0m [0midx[0m[0;34m,[0m [0mrow[0m [0;32min[0m [0mtranscoded_metadata_df[0m[0;34m.[0m[0msample[0m[0;34m([0m[0;36m5[0m[0;34m)[0m[0;34m.[0m[0miterrows[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m     [0mframes[0m [0;34m=[0m [0mmin[0m[0;34m([0m[0mrow[0m[0;34m.[0m[0mtranscoded_frames[0m[0;34m,[0m [0mrow[0m[0;34m.[0m[0moriginal_frames[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 6[0;31m     [0mframe_idx[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mrandom[0m[0;34m.[0m[0mrandint[0m[0;34m([0m[0mframes[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      7[0m [0;34m[0m[0m
-[1;32m      8[0m     [0moriginal_cap[0m [0;34m=[0m [0mcv2[0m[0;34m.[0m[0mVideoCapture[0m[0;34m([0m[0mstr[0m[0;34m([0m[0mrow[0m[0;34m.[0m[0moriginal_file[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Input [0;32mIn [11][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m ([43mmetadata_df[49m[38;5;241;43m.[39;49m[43mframes[49m [38;5;241m/[39m metadata_df[38;5;241m.[39mfps)[38;5;241m.[39msum()
 
-[0;32mmtrand.pyx[0m in [0;36mnumpy.random.mtrand.RandomState.randint[0;34m()[0m
+File [0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py:5575[0m, in [0;36mNDFrame.__getattr__[0;34m(self, name)[0m
+[1;32m   5568[0m [38;5;28;01mif[39;00m (
+[1;32m   5569[0m     name [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39m_internal_names_set
+[1;32m   5570[0m     [38;5;129;01mand[39;00m name [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39m_metadata
+[1;32m   5571[0m     [38;5;129;01mand[39;00m name [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39m_accessors
+[1;32m   5572[0m     [38;5;129;01mand[39;00m [38;5;28mself[39m[38;5;241m.[39m_info_axis[38;5;241m.[39m_can_hold_identifiers_and_holds_name(name)
+[1;32m   5573[0m ):
+[1;32m   5574[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[name]
+[0;32m-> 5575[0m [38;5;28;01mreturn[39;00m [38;5;28;43mobject[39;49m[38;5;241;43m.[39;49m[38;5;21;43m__getattribute__[39;49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mname[49m[43m)[49m
 
-[0;32m_bounded_integers.pyx[0m in [0;36mnumpy.random._bounded_integers._rand_int64[0;34m()[0m
-
-[0;31mValueError[0m: high <= 0
-ValueError: high <= 0
+[0;31mAttributeError[0m: 'DataFrame' object has no attribute 'frames'
+AttributeError: 'DataFrame' object has no attribute 'frames'
 
