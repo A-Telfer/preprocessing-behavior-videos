@@ -255,9 +255,9 @@ combined = combined.merge(treatment_df, how='left', on='id')
 combined
 
 
-# # Saving the datasheet
+# ## Saving the datasheet
 
-# In[19]:
+# In[18]:
 
 
 combined.to_csv(EXPERIMENT_DIR / 'experiment-data.csv', index=False)
