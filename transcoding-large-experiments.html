@@ -228,11 +228,6 @@ const thebe_selector_output = ".output, .cell_output"
      What’s covered here
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-s-not-covered-here">
-     What’s not covered here
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -360,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
      What’s covered here
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-s-not-covered-here">
-     What’s not covered here
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -478,26 +468,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="what-s-covered-here">
 <h3>What’s covered here<a class="headerlink" href="#what-s-covered-here" title="Permalink to this headline">¶</a></h3>
-<p>Here we explore a large experiment with an inconsistent structure and lots of irrelevant data</p>
+<p>Here we explore a large experiment (151 days of video as we discover later here) with an inconsistent structure</p>
 <p>We’re going to focus on a few main tasks (and the validation of them)</p>
 <ol class="simple">
-<li><p>Exploring the file systems: Finding all of the relevant videos</p></li>
-<li><p>Video details: Getting high level details from them to later verify everything was copied correctly (such as time). We also want to see if the videos themselves are very different and need lots of preprocessing.</p></li>
-<li><p>Transcoding the videos into a new folder using <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code></p></li>
+<li><p>Exploring the data in order to identify all of the relevant files</p></li>
+<li><p>Describing the data, e.g. high level details such as video duration and resolutions.</p></li>
+<li><p>Compressing the videos using transcoding</p></li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In this case, we do not resize the videos because they are fairly low quality. However you can easily add option to the ffmpeg command in the transcoding step to this.</p>
-</div>
-</div>
-<div class="section" id="what-s-not-covered-here">
-<h3>What’s not covered here<a class="headerlink" href="#what-s-not-covered-here" title="Permalink to this headline">¶</a></h3>
-<p>This notebook is aimed at researchers, in order to understand what’s going on it’s helpful to be somewhat familiar with</p>
-<ul class="simple">
-<li><p>python</p></li>
-<li><p>bash</p></li>
-<li><p>ffmpeg</p></li>
-</ul>
 <p>For questions or suggestions, reach out to me at <a class="reference external" href="mailto:andretelfer&#37;&#52;&#48;cmail&#46;carleton&#46;ca">andretelfer<span>&#64;</span>cmail<span>&#46;</span>carleton<span>&#46;</span>ca</a></p>
 </div>
 </div>
